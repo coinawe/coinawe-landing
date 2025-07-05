@@ -30,7 +30,7 @@ document.getElementById("ton-form")?.addEventListener("submit", function (e) {
 
 // === Countdown Pre-ICO ===
 const countdown = document.getElementById("timer");
-const targetDate = new Date("2025-07-31T23:59:59").getTime();
+const targetDate = new Date("2025-11-31T23:59:59").getTime();
 setInterval(function () {
   const now = new Date().getTime();
   const distance = targetDate - now;
