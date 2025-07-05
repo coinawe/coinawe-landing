@@ -46,12 +46,12 @@ setInterval(function () {
 }, 1000);
 
 // === Statistik Wallet Klaim & Referral Leaderboard ===
-const sheetId = "1RFVZIo3Hn_pgFT7ujQvl1J1sEXAMPLE"; // Ganti sesuai Sheet-mu
-const sheetRange = "Airdrop!A2:F"; // Sesuaikan dengan struktur Sheet
+const sheetId = "1FYXPltXN8vpkw-rNvMm8yFQnwEk6PmYXIWOwiNLG3PM"; // Ganti sesuai Sheet-mu
+const sheetRange = "sheet1"; // Sesuaikan dengan struktur Sheet
 
 async function fetchSheetData() {
   try {
-    const res = await fetch(`https://opensheet.elk.sh/${sheetId}/Airdrop`);
+    const res = await fetch(`https://opensheet.elk.sh/${sheetId}/sheet1`);
     const data = await res.json();
     // Jumlah Wallet
     document.getElementById("wallet-count").innerText = `${data.length} wallet telah klaim`;
