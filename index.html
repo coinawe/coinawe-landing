@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coinawe – AWEWE Token Pre-ICO</title>
+  <meta name="description" content="Pre-ICO resmi AWEWE Token dari ekosistem escrow Coinawe telah dibuka. Klaim airdrop dan beli token sekarang!" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/coinawe-landing/logo/main/logo-awewe.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.1.1/tsparticles.bundle.min.js"></script>
+  <script>
+    window.onload = () => {
+      AOS.init();
+      tsParticles.load("particles-js", {
+        fullScreen: { enable: true, zIndex: -1 },
+        particles: {
+          number: { value: 60 },
+          size: { value: 2 },
+          move: { enable: true, speed: 1 },
+          opacity: { value: 0.2 },
+          color: { value: "#ffffff" },
+          links: { enable: true, color: "#ffffff", distance: 100, opacity: 0.3 }
+        },
+        background: { color: "#0d0d1e" }
+      });
+    };
+  </script>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <nav>
+    <div class="logo">AWEWE</div>
+    <ul>
+      <li><a href="#airdrop">Klaim Airdrop</a></li>
+      <li><a href="#beli">Beli Token</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" data-aos="fade-up">
+    <h1>Selamat Datang di Ekosistem Escrow Terpercaya</h1>
+    <p>Gabung sekarang dalam ekosistem escrow Coinawe!</p>
+    <a href="#airdrop" class="cta">Gabung Sekarang</a>
+    <div id="timer" class="countdown"></div>
+    <p id="wallet-count">Loading klaim...</p>
+  </header>
+
+  <section id="airdrop" data-aos="fade-up">
+    <h2>Klaim Airdrop</h2>
+    <form id="ton-form">
+      <input type="text" id="wallet" placeholder="Masukkan alamat wallet TON" required />
+      <button type="submit">Klaim Airdrop</button>
+    </form>
+  </section>
+
+  <section id="tokenomics" data-aos="fade-up">
+    <h2>Tokenomics</h2>
+    <p>Total Supply: <strong>1.000.000.000 AWEWE</strong></p>
+    <ul>
+      <li>40% Komunitas & Airdrop</li>
+      <li>30% Pre-ICO & Penjualan Awal</li>
+      <li>20% Tim & Developer (terkunci 6 bulan)</li>
+      <li>10% Likuiditas DEX & CEX Listing</li>
+    </ul>
+  </section>
+
+  <section id="roadmap" data-aos="fade-up">
+    <h2>Roadmap</h2>
+    <ul>
+      <li>? Q2 2025 – Launch Bot Escrow Coinawe</li>
+      <li>? Q3 2025 – Pre-ICO & Airdrop AWEWE Token</li>
+      <li>?? Q4 2025 – Listing DEX & CEX</li>
+      <li>?? Q1 2026 – DAO Governance & Ekspansi</li>
+    </ul>
+  </section>
+
+  <section id="leaderboard" data-aos="fade-up">
+    <h2>Top Referral</h2>
+    <div id="referral-table">Loading...</div>
+  </section>
+
+  <section id="testimoni" data-aos="fade-up">
+    <h2>Testimoni Pengguna</h2>
+    <div id="testimoni-slider">Loading...</div>
+  </section>
+
+  <section id="newsletter" data-aos="fade-up">
+    <h2>Newsletter</h2>
+    <form id="newsletter-form">
+      <input type="email" id="email" placeholder="Masukkan email kamu" required />
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Coinawe – AWEWE Token</p>
+    <a href="terms-id.html">Terms (ID)</a> |
+    <a href="terms-en.html">Terms (EN)</a> |
+    <a href="terms-ru.html">Terms (RU)</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
