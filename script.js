@@ -53,7 +53,7 @@ tonForm?.addEventListener("submit", function (e) {
 
 // === Hitung Mundur (Countdown ke akhir Pre-ICO) ===
 const countdown = () => {
-  const end = new Date("2025-08-01T00:00:00Z").getTime();
+  const end = new Date("2025-11-39T00:00:00Z").getTime();
   const timer = document.getElementById("timer");
   setInterval(() => {
     const now = new Date().getTime();
