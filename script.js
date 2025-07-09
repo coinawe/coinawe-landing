@@ -49,6 +49,47 @@ tonForm?.addEventListener("submit", function (e) {
     })
     .catch(() => alert("❌ Gagal klaim. Silakan coba lagi."));
 });
+// === Tombol Copy Wallet Escrow ===
+document.getElementById("copy-btn")?.addEventListener("click", () => {
+  const code = document.getElementById("wallet-target").innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    alert("Alamat escrow disalin!");
+  });
+});
+
+// === Form Pembelian Token ===
+const buyForm = document.getElementById("buy-form");
+buyForm?.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const wallet = document.getElementById("wallet-buy").value.trim();
+  const amount = document.getElementById("ton-amount").value.trim();
+  const txhash = document.getElementById("txhash").value.trim();
+  const ref = document.getElementById("ref").value.trim();
+
+  if (!txhash.startsWith("0x") || txhash.length < 10) {
+    return alert("Isi TX Hash yang valid (contoh mulai dengan 0x...)");
+  }
+
+  const params = new URLSearchParams({ wallet, amount, txhash, ref });
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwwj3ay9ifXYLfRTzd7kls0uA6JxTeNFjgBO6Pyh38fDFYsunYHDRoAnWPqoJ_Hsskg/exec";
+
+  fetch(scriptURL, { method: "POST", body: params })
+    .then(res => res.text())
+    .then(response => {
+      alert(response);
+      if (response.toLowerCase().includes("berhasil")) {
+        const message = `💰 Pembelian Token AWEWE:\nWallet: ${wallet}\nTON: ${amount}\nTX Hash: ${txhash}\nReferral: ${ref || "-"}`;
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: chatId, text: message }),
+        });
+        buyForm.reset();
+      }
+    })
+    .catch(() => alert("❌ Gagal kirim bukti. Coba lagi."));
+});
 
 
 // === Hitung Mundur (Countdown ke akhir Pre-ICO) ===
