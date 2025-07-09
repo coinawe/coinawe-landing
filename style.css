@@ -116,3 +116,24 @@ footer {
   font-size: 0.9rem;
   margin-top: 4rem;
 }
+.wallet-copy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.wallet-copy code {
+  background: #222;
+  padding: 0.5rem;
+  border-radius: 5px;
+  user-select: all;
+}
+.wallet-copy button {
+  padding: 0.5rem 1rem;
+  background: #ff6f00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.wallet-copy button:hover { background: #e65c00; }
