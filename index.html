@@ -134,5 +134,39 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+fetch("https://script.google.com/macros/s/AKfycbyoEY00nnXlMIgnAOkDbxWwB7rsIlnlOFjx13Zi5ikiVzP2xl3X9McvQY0Sjcnp9BefPg/exec")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("referral-table");
+    if (!data.length) return container.innerHTML = "<p>Belum ada data.</p>";
+
+    const table = document.createElement("table");
+    table.innerHTML = `
+      <tr>
+        <th>Ranking</th>
+        <th>Referral ID</th>
+        <th>Jumlah Referral</th>
+      </tr>
+    `;
+
+    data.forEach((item, i) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i + 1}</td>
+        <td>@${item.ref}</td>
+        <td>${item.count}</td>
+      `;
+      table.appendChild(row);
+    });
+
+    container.innerHTML = "";
+    container.appendChild(table);
+  })
+  .catch(err => {
+    console.error("Leaderboard error:", err);
+    document.getElementById("referral-table").innerHTML = "<p>Gagal memuat leaderboard.</p>";
+  });
+</script>
 </body>
 </html>
