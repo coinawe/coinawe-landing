@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coinawe – Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="airdrop-background">
+    <img src="airdrop.jpg" class="parachute" />
+    <img src="airdrop.jpg" class="parachute delay1" />
+    <img src="airdrop.jpg" class="parachute delay2" />
+  </div>
+
+  <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #1e293b; padding: 1rem 2rem;">
+    <div style="font-weight: bold; font-size: 1.5rem; color: #38bdf8;">Coinawe</div>
+    <ul style="list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0;">
+      <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+      <li><a href="#airdrop" style="color: white; text-decoration: none;">Airdrop</a></li>
+      <li><a href="#roadmap" style="color: white; text-decoration: none;">Roadmap</a></li>
+      <li><a href="whitepaper.html" style="color: white; text-decoration: none;">Whitepaper</a></li>
+    </ul>
+  </nav>
+
+  <header class="container">
+    <h1><span style="color:#38bdf8">AWEWE</span> THE INDONESIAN TOKEN<br>ON <span style="color:#3b82f6">TON BLOCKCHAIN</span></h1>
+    <p class="tagline">Empowering secure and transparent escrow services in the Web3 era</p>
+    <a class="cta-button" href="https://t.me/coinawe" target="_blank">Join Community</a>
+  </header>
+
+  <section id="airdrop" class="container">
+    <h2>Klaim Airdrop</h2>
+    <form id="ton-form" style="margin-bottom: 2rem;">
+      <input id="wallet" type="text" placeholder="Alamat Wallet TON" required style="padding: 0.5rem; border-radius: 8px; border: none;">
+      <button type="submit" class="cta-button">Kirim</button>
+    </form>
+    <p id="wallet-count">Memuat data wallet...</p>
+    <div id="referral-table" style="margin-top: 2rem;"></div>
+  </section>
+
+  <section class="countdown-section container">
+    <h2>Countdown Pre-ICO</h2>
+    <div id="timer">Loading...</div>
+  </section>
+
+  <section id="roadmap" class="roadmap container">
+    <h2>Roadmap</h2>
+    <ol>
+      <li>✅ Bot Escrow Launch</li>
+      <li>✅ Website Multi-language Support</li>
+      <li>🔄 Airdrop Campaign & Analytics Dashboard</li>
+      <li>🚀 Listing on TON Platforms</li>
+      <li>🛠️ Community Governance & DAO</li>
+    </ol>
+  </section>
+
+  <footer class="container">
+    &copy; 2025 Coinawe – Powered by TON. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
