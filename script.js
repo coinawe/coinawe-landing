@@ -1,5 +1,5 @@
 // Ganti dengan URL Web App kamu
-const API_URL = "https://script.google.com/macros/s/AKfycbxFFkfvAbdQeTvdUDEvDUbMvQOXeLdcbjivwuazSzy20MHTwd1Q6kk6jrorKUdwr-7T/exec";
+const API_URL = "https://old-unit-f8e2.collerbayu.workers.dev/";
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
