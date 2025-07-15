@@ -1,65 +1,75 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coinawe – Home</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>AWEWE Token - Pre-ICO Resmi</title>
+  <meta name="description" content="AWEWE adalah token utilitas ekosistem Coinawe, digunakan untuk transaksi escrow kripto dan fiat. Bergabunglah dengan Pre-ICO sekarang." />
+  <meta name="keywords" content="AWEWE, Coinawe, Token, Pre-ICO, Escrow Crypto, Crypto Indonesia" />
+  <meta name="author" content="Coinawe Team" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AWEWE Token – Resmi dari Coinawe" />
+  <meta property="og:description" content="Pre-ICO resmi AWEWE Token dari ekosistem escrow Coinawe telah dibuka. Kunjungi coinawe.site untuk bergabung sekarang!" />
+  <meta property="og:image" content="assets/logo-awewe.png" />
+  <meta property="og:url" content="https://coinawe.site" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AWEWE Token – Resmi dari Coinawe" />
+  <meta name="twitter:description" content="Pre-ICO resmi AWEWE Token dari ekosistem escrow Coinawe telah dibuka. Gabung sekarang di coinawe.site!" />
+  <meta name="twitter:image" content="assets/logo-awewe.png" />
+  <meta name="twitter:site" content="@coinawe" />
+
+  <link rel="icon" type="image/png" href="assets/logo-awewe.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="airdrop-background">
-    <img src="airdrop.jpg" class="parachute" />
-    <img src="airdrop.jpg" class="parachute delay1" />
-    <img src="airdrop.jpg" class="parachute delay2" />
+  <div class="container">
+    <header>
+      <img src="assets/logo-awewe.png" alt="Logo AWEWE" class="logo" />
+      <h1>AWEWE Token</h1>
+      <p class="tagline">Token masa depan untuk transaksi escrow yang aman, cepat, dan tanpa KYC.</p>
+      <a href="https://t.me/indo_escrow_bot" class="cta-button" target="_blank">🚀 Gabung Pre-ICO via Telegram</a>
+    </header>
+
+    <div class="action-buttons">
+      <a href="https://t.me/indo_escrow_bot" target="_blank">💰 Beli Token</a>
+      <a href="https://t.me/coinawe" target="_blank">👥 Gabung Komunitas</a>
+    </div>
+
+    <section class="countdown-section">
+      <h2>Countdown Menuju Akhir Pre-ICO</h2>
+      <div id="timer" class="timer">Loading...</div>
+    </section>
+
+    <section class="tokenomics">
+      <h2>Tokenomics</h2>
+      <div class="info-grid">
+        <div><strong>Supply Total</strong><br/>100.000.000 AWEWE</div>
+        <div><strong>Pre-ICO</strong><br/>25% (25.000.000)</div>
+        <div><strong>Harga</strong><br/>Rp 20 / AWEWE</div>
+        <div><strong>Target Dana</strong><br/>Rp 500.000.000</div>
+      </div>
+    </section>
+
+    <section class="roadmap">
+      <h2>Roadmap Proyek</h2>
+      <ol>
+        <li><strong>Q2 2025</strong> – Pre-ICO & Launch Token</li>
+        <li><strong>Q3 2026</strong> – Listing di DEX & Integrasi Bot</li>
+        <li><strong>Q4 2026</strong> – Launch DAO & Reward Komunitas</li>
+        <li><strong>2026</strong> – Ekspansi Ekosistem & Listing CEX</li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>© 2025 Coinawe | AWEWE Token. All rights reserved.</p>
+    </footer>
   </div>
-
-  <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #1e293b; padding: 1rem 2rem;">
-    <div style="font-weight: bold; font-size: 1.5rem; color: #38bdf8;">Coinawe</div>
-    <ul style="list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0;">
-      <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
-      <li><a href="#airdrop" style="color: white; text-decoration: none;">Airdrop</a></li>
-      <li><a href="#roadmap" style="color: white; text-decoration: none;">Roadmap</a></li>
-      <li><a href="whitepaper.html" style="color: white; text-decoration: none;">Whitepaper</a></li>
-    </ul>
-  </nav>
-
-  <header class="container">
-    <h1><span style="color:#38bdf8">AWEWE</span> THE INDONESIAN TOKEN<br>ON <span style="color:#3b82f6">TON BLOCKCHAIN</span></h1>
-    <p class="tagline">Empowering secure and transparent escrow services in the Web3 era</p>
-    <a class="cta-button" href="https://t.me/coinawe" target="_blank">Join Community</a>
-  </header>
-
-  <section id="airdrop" class="container">
-    <h2>Klaim Airdrop</h2>
-    <form id="ton-form" style="margin-bottom: 2rem;">
-      <input id="wallet" type="text" placeholder="Alamat Wallet TON" required style="padding: 0.5rem; border-radius: 8px; border: none;">
-      <button type="submit" class="cta-button">Kirim</button>
-    </form>
-    <p id="wallet-count">Memuat data wallet...</p>
-    <div id="referral-table" style="margin-top: 2rem;"></div>
-  </section>
-
-  <section class="countdown-section container">
-    <h2>Countdown Pre-ICO</h2>
-    <div id="timer">Loading...</div>
-  </section>
-
-  <section id="roadmap" class="roadmap container">
-    <h2>Roadmap</h2>
-    <ol>
-      <li>✅ Bot Escrow Launch</li>
-      <li>✅ Website Multi-language Support</li>
-      <li>🔄 Airdrop Campaign & Analytics Dashboard</li>
-      <li>🚀 Listing on TON Platforms</li>
-      <li>🛠️ Community Governance & DAO</li>
-    </ol>
-  </section>
-
-  <footer class="container">
-    &copy; 2025 Coinawe – Powered by TON. All rights reserved.
-  </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
