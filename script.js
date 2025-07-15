@@ -30,7 +30,7 @@ document.querySelectorAll(".animate").forEach(el => observer.observe(el));
 
 // Validasi TON wallet address
 const isValidTonAddress = (addr) => {
-  return /^([UEQ][A-Z0-9_-]{47,60})$/.test(addr);
+  return /^([UEQ][a-zA-Z0-9_-]{47,60})$/.test(addr);
 };
 
 // Form klaim airdrop
