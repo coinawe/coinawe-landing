@@ -69,6 +69,72 @@
   <footer class="container">
     &copy; 2025 Coinawe – Powered by TON. All rights reserved.
   </footer>
+<script>
+  const translations = {
+    // ... (existing translations)
+  };
+
+  function switchLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    const t = translations[lang];
+    document.getElementById('nav-home').textContent = t.home;
+    document.getElementById('nav-create').textContent = t.create;
+    document.getElementById('nav-chat').textContent = t.chat;
+    document.getElementById('nav-channel').textContent = t.channel;
+    document.getElementById('nav-contact').textContent = t.contact;
+    document.getElementById('hero-title').textContent = t.title;
+    document.getElementById('hero-subtitle').textContent = t.subtitle;
+    document.getElementById('start-button').textContent = t.start;
+    const steps = document.querySelectorAll('.step');
+    steps.forEach((li, i) => li.textContent = t.steps[i]);
+    document.getElementById('lang-select').value = lang;
+  }
+
+  window.onload = () => {
+    const savedLang = localStorage.getItem('lang') || 'en';
+    switchLanguage(savedLang);
+    startCountdown(new Date("2025-11-30T00:00:00Z").getTime());
+  };
+
+  function updatePlaceholder() {
+    const currency = document.getElementById('currency').value;
+    const input = document.getElementById('amount');
+    let symbol = '';
+    switch (currency) {
+      case 'Rupiah': symbol = 'Rp'; break;
+      case 'USDT': symbol = '₮'; break;
+      case 'TON': symbol = 'TON'; break;
+      case 'BNB': symbol = 'BNB'; break;
+      case 'ETH': symbol = 'ETH'; break;
+      case 'BTC': symbol = '₿'; break;
+    }
+    input.placeholder = `Amount (e.g. 1000 ${symbol})`;
+  }
+
+  function startCountdown(endDate) {
+    const timer = document.getElementById('timer');
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance < 0) {
+        timer.innerHTML = "Pre-ICO has started!";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+  }
+</script>
 
   <script src="script.js"></script>
 </body>
