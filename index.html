@@ -3,202 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coinawe – Home</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="airdrop-background">
-    <img src="airdrop.jpg" class="parachute" />
-    <img src="airdrop.jpg" class="parachute delay1" />
-    <img src="airdrop.jpg" class="parachute delay2" />
-  </div>
-
-  <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #1e293b; padding: 1rem 2rem;">
-    <div style="font-weight: bold; font-size: 1.5rem; color: #38bdf8;">Coinawe</div>
-    <ul style="list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0;">
-      <li><a id="nav-home" href="index.html" style="color: white; text-decoration: none;">Home</a></li>
-      <li><a id="nav-create" href="https://escrow.coinawe.site/form.html" style="color: white; text-decoration: none;">Buat Escrow</a></li>
-      <li><a id="nav-chat" href="#airdrop" style="color: white; text-decoration: none;">Airdrop</a></li>
-      <li><a id="nav-channel" href="#roadmap" style="color: white; text-decoration: none;">Roadmap</a></li>
-      <li><a id="nav-contact" href="whitepaper.html" style="color: white; text-decoration: none;">Whitepaper</a></li>
-    </ul>
-    <select id="lang-select" onchange="switchLanguage(this.value)" style="margin-left: 1rem; background: #1e293b; color: white; border: 1px solid #38bdf8; padding: 5px; border-radius: 6px;">
-      <option value="en">English</option>
-      <option value="id">Indonesia</option>
-      <option value="ru">Русский</option>
-    </select>
-  </nav>
-
-  <header class="container">
-    <h1 id="hero-title">Aman, Cepat, dan Terpercaya</h1>
-    <p id="hero-subtitle" class="tagline">Empowering secure and transparent escrow services in the Web3 era</p>
-    <a class="cta-button" id="start-button" href="https://t.me/coinawe" target="_blank">Join Community</a>
-  </header>
-
-  <section id="airdrop" class="container animate">
-    <h2>Klaim Airdrop</h2>
-    <form id="ton-form" style="margin-bottom: 1.5rem;">
-      <input 
-        id="wallet" 
-        type="text" 
-        placeholder="Alamat Wallet TON (UQ..., EQ...)" 
-        required 
-        style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #ccc; width: 100%; max-width: 400px; margin-bottom: 0.5rem;"
-      >
-      <br />
-      <button type="submit" class="cta-button" style="margin-top: 0.5rem;">Klaim Airdrop</button>
-    </form>
-    <p id="wallet-count" style="color: #64748b; font-size: 0.95rem;">Memuat data wallet...</p>
-    <div id="referral-table" style="margin-top: 2rem;"></div>
-  </section>
-
-  <section class="countdown-section container">
-    <h2>Countdown Pre-ICO</h2>
-    <div id="timer">Loading...</div>
-    <a href="https://t.me/indo_escrow_bot" target="_blank" style="
+  <title>Coinawe – Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      max-width: 500px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #38bdf8;
+    }
+    .telegram-link {
+      margin-top: 2rem;
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
       background-color: #2ecc71;
       color: white;
-      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 1rem;">
-      Join Pre-ICO
-    </a>
-  </section>
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Coinawe</div>
+  <h1>🚧 Website Under Maintenance</h1>
+  <p>We are currently improving our platform to serve you better. Please check back soon!</p>
+  <a href="https://t.me/coinawe" target="_blank" class="telegram-link">Join our Telegram for updates</a>
 
-  <section id="roadmap" class="roadmap container">
-    <h2>Roadmap</h2>
-    <ol>
-      <li class="step">✅ Bot Escrow Launch</li>
-      <li class="step">✅ Website Multi-language Support</li>
-      <li class="step">🔄 Airdrop Campaign & Analytics Dashboard</li>
-      <li class="step">🚀 Listing on TON Platforms</li>
-      <li class="step">🛠️ Community Governance & DAO</li>
-    </ol>
-  </section>
-
-  <footer class="container">
-    &copy; 2025 Coinawe – Powered by TON. All rights reserved.
-  </footer>
-
-  <!-- Final Script -->
   <script>
-    const translations = {
-      en: {
-        home: "Home",
-        create: "Create Escrow",
-        chat: "Group Chat",
-        channel: "Official Channel",
-        contact: "Contact",
-        title: "Never buy or sell online without using EscrowKita",
-        subtitle: "With EscrowKita you can safely transact online without the risk of scams.",
-        start: "Get started now",
-        steps: [
-          "Buyer and Seller agree on terms",
-          "Buyer sends funds to EscrowKita",
-          "Seller ships the goods",
-          "Buyer approves the goods",
-          "EscrowKita releases the funds"
-        ]
-      },
-      id: {
-        home: "Beranda",
-        create: "Buat Escrow",
-        chat: "Grup Chat",
-        channel: "Channel Resmi",
-        contact: "Kontak",
-        title: "Jangan beli atau jual online tanpa EscrowKita",
-        subtitle: "Dengan EscrowKita kamu bisa bertransaksi aman tanpa risiko penipuan.",
-        start: "Mulai sekarang",
-        steps: [
-          "Pembeli & Penjual sepakat",
-          "Pembeli mengirim dana ke EscrowKita",
-          "Penjual kirim barang",
-          "Pembeli menyetujui barang",
-          "EscrowKita kirim dana ke penjual"
-        ]
-      },
-      ru: {
-        home: "Главная",
-        create: "Создать эскроу",
-        chat: "Групповой чат",
-        channel: "Официальный канал",
-        contact: "Контакт",
-        title: "Никогда не покупайте и не продавайте онлайн без EscrowKita",
-        subtitle: "С EscrowKita вы можете безопасно совершать сделки онлайн без риска мошенничества.",
-        start: "Начать сейчас",
-        steps: [
-          "Покупатель и продавец договариваются",
-          "Покупатель отправляет средства в EscrowKita",
-          "Продавец отправляет товар",
-          "Покупатель одобряет товар",
-          "EscrowKita отправляет средства продавцу"
-        ]
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Block F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && ['I', 'i', 'C', 'c', 'J', 'j'].includes(e.key)) ||
+        (e.ctrlKey && ['U', 'u'].includes(e.key))
+      ) {
+        e.preventDefault();
       }
-    };
+    });
 
-    function switchLanguage(lang) {
-      localStorage.setItem('lang', lang);
-      const t = translations[lang];
-      document.getElementById('nav-home').textContent = t.home;
-      document.getElementById('nav-create').textContent = t.create;
-      document.getElementById('nav-chat').textContent = t.chat;
-      document.getElementById('nav-channel').textContent = t.channel;
-      document.getElementById('nav-contact').textContent = t.contact;
-      document.getElementById('hero-title').textContent = t.title;
-      document.getElementById('hero-subtitle').textContent = t.subtitle;
-      document.getElementById('start-button').textContent = t.start;
-      const steps = document.querySelectorAll('.step');
-      steps.forEach((li, i) => li.textContent = t.steps[i]);
-      document.getElementById('lang-select').value = lang;
-    }
-
-    function updatePlaceholder() {
-      const currency = document.getElementById('currency');
-      const input = document.getElementById('amount');
-      if (!currency || !input) return;
-      let symbol = '';
-      switch (currency.value) {
-        case 'Rupiah': symbol = 'Rp'; break;
-        case 'USDT': symbol = '₮'; break;
-        case 'TON': symbol = 'TON'; break;
-        case 'BNB': symbol = 'BNB'; break;
-        case 'ETH': symbol = 'ETH'; break;
-        case 'BTC': symbol = '₿'; break;
+    // Extra: Detect if DevTools is open
+    setInterval(() => {
+      const devtools = window.outerWidth - window.innerWidth > 160;
+      if (devtools) {
+        document.body.innerHTML = '<h1 style="color: red;">⚠️ Developer tools are disabled on this site.</h1>';
       }
-      input.placeholder = `Amount (e.g. 1000 ${symbol})`;
-    }
-
-    function startCountdown(endDate) {
-      const timer = document.getElementById('timer');
-      if (!timer) return;
-      function updateTimer() {
-        const now = new Date().getTime();
-        const distance = endDate - now;
-        if (distance < 0) {
-          timer.innerHTML = "Pre-ICO has started!";
-          clearInterval(interval);
-          return;
-        }
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      }
-      updateTimer();
-      const interval = setInterval(updateTimer, 1000);
-    }
-
-    window.onload = () => {
-      const savedLang = localStorage.getItem('lang') || 'en';
-      switchLanguage(savedLang);
-      startCountdown(new Date("2025-11-30T00:00:00Z").getTime());
-    };
+    }, 1000);
   </script>
 </body>
 </html>
