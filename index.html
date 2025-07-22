@@ -141,17 +141,27 @@
     AOS.init();
 
     // ===== Newsletter to Telegram =====
-    document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const message = `📥 New Newsletter Subscriber%0A📧 Email: ${email}`;
-      const botToken = "8053150769:AAG32Ys8JnTcsBfFHZm0bO5lXtmCzLsFy-Q";
-      const chatId = "-1002697795354";
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-        .then(response => alert("Email successfully sent to the investor group!"))
-        .catch(error => alert("Failed to send to Telegram."));
-      this.reset();
-    });
+    document.getElementById("newsletter-form").addEventListener("submit", function(e) { 
+  e.preventDefault();
+  let username = document.getElementById("username").value.trim();
+  if (!username.startsWith("@")) {
+    username = "@" + username;
+  }
+
+  // GANTI DENGAN URL WEB APP GAS KAMU
+  const webAppUrl = "https://script.google.com/macros/s/AKfycbyRD34EG-HU0_x7_NbSwYgSG_C7zljs0mBwfRACnr1vvgGIGcEZIyCz8cyRkjfmkwXA9w/exec";
+
+  fetch(webAppUrl, {
+    method: "POST",
+    contentType: "application/json",
+    body: JSON.stringify({ username: username })
+  })
+  .then(response => {
+    alert("✅ Username successfully submitted to the investor group!");
+    this.reset();
+  })
+  .catch(error => alert("❌ Failed to submit. Try again later."));
+});
 
     // ===== Countdown Pre-ICO =====
     const countdownDate = new Date("2025-12-31T23:59:59").getTime(); // <-- Ubah sesuai jadwal Pre-ICO
