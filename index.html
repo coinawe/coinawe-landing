@@ -10,13 +10,11 @@
   <style>
     body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
 
-    /* Navigation */
     nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
     nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; }
     nav a { color:#f8fafc; font-weight:600; text-decoration:none; transition:0.3s; }
     nav a:hover { color:#38bdf8; }
 
-    /* Coinawe Escrow Glow Button */
     .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
     .glow-button::after {
       content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -29,23 +27,25 @@
       100% { transform: translate(150%,150%) rotate(25deg); }
     }
 
-    /* AWEWE Token Pre-ICO */
     header { text-align:center; padding:4rem 2rem; background:#020617; }
     header img { width:100px; margin-bottom:1rem; }
     header h1 { font-size:2.5rem; font-weight:800; color:#facc15; }
-    .cta-button { margin-top:1.5rem; padding:1rem 2rem; background:#38bdf8; color:#0f172a; border-radius:8px; text-decoration:none; font-weight:600; }
+    .cta-button { margin-top:1.5rem; padding:1rem 2rem; background:#38bdf8; color:#0f172a; border-radius:8px; text-decoration:none; font-weight:600; transition:0.3s; }
+    .cta-button:hover { background:#0ea5e9; }
+
     .container { max-width:900px; margin:auto; padding:2rem; }
     .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; background:#1e293b; padding:1.5rem; border-radius:10px; }
     .info-grid div { background:#0f172a; padding:1rem; border-radius:8px; text-align:center; }
     .roadmap li { background:#1e293b; padding:0.75rem 1rem; border-left:4px solid #facc15; border-radius:6px; margin-bottom:0.75rem; }
+
     .newsletter-form { background:#1e293b; padding:2rem; border-radius:12px; text-align:center; max-width:500px; margin:auto; }
     .newsletter-form input { padding:0.8rem; border:none; border-radius:8px; width:80%; margin-bottom:1rem; font-size:1rem; }
     .newsletter-form button { padding:0.8rem 1.5rem; background:#facc15; color:#1e293b; border:none; border-radius:8px; font-weight:bold; cursor:pointer; }
+
     footer { text-align:center; padding:2rem; background:transparent; color:#94a3b8; }
     footer.absolute { position:relative; bottom:0; }
     section { scroll-margin-top: 80px; }
 
-    /* ✅ Countdown Pulse Animation */
     .pulse {
       animation: pulse 1.5s infinite;
     }
@@ -87,12 +87,10 @@
     <header data-aos="fade-down">
       <img src="icon.png" alt="AWEWE Logo" class="mx-auto" />
       
-      <!-- Pre-ICO Button (will hide after countdown) -->
       <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">
         🚀 Join Pre-ICO via Telegram
       </a>
 
-      <!-- Countdown -->
       <div id="countdown" class="text-center text-yellow-400 font-bold text-xl mt-4">
         Pre-ICO Ends In: <span id="timer" class="pulse">Loading...</span>
       </div>
@@ -121,72 +119,70 @@
         </ol>
       </section>
 
+      <!-- ✅ Investor Form -->
       <section class="newsletter-form" data-aos="zoom-in" style="margin-top:4rem;">
         <h2>Join Investor Newsletter</h2>
         <form id="newsletter-form">
-          <input type="email" id="email" placeholder="Enter your email" required><br>
+          <input type="text" id="username" placeholder="@YourTelegramUsername" required><br>
           <button type="submit">Subscribe Now</button>
         </form>
       </section>
     </div>
   </section>
 
-  <!-- ✅ Footer -->
   <footer class="absolute bottom-4 text-slate-500 text-sm">
     &copy; 2025 COINAWE. All rights reserved.
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-    // ===== Newsletter to Telegram =====
-    document.getElementById("newsletter-form").addEventListener("submit", function(e) { 
-  e.preventDefault();
-  let username = document.getElementById("username").value.trim();
-  if (!username.startsWith("@")) {
-    username = "@" + username;
-  }
+  // ===== Newsletter to Telegram =====
+  document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let username = document.getElementById("username").value.trim();
+    if (!username.startsWith("@")) {
+      alert("Please enter a valid Telegram username (start with @)");
+      return;
+    }
 
-  // GANTI DENGAN URL WEB APP GAS KAMU
-  const webAppUrl = "https://script.google.com/macros/s/AKfycbyRD34EG-HU0_x7_NbSwYgSG_C7zljs0mBwfRACnr1vvgGIGcEZIyCz8cyRkjfmkwXA9w/exec";
+    const message = `📥 New Investor%0A👤 Username: ${username}`;
+    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+    const chatId = "-1002834298142"; 
 
-  fetch(webAppUrl, {
-    method: "POST",
-    contentType: "application/json",
-    body: JSON.stringify({ username: username })
-  })
-  .then(response => {
-    alert("✅ Username successfully submitted to the investor group!");
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(() => alert("✅ Username successfully sent to the investor group!"))
+      .catch(() => alert("❌ Failed to send to Telegram."));
     this.reset();
-  })
-  .catch(error => alert("❌ Failed to submit. Try again later."));
-});
+  });
 
-    // ===== Countdown Pre-ICO =====
-    const countdownDate = new Date("2025-12-31T23:59:59").getTime(); // <-- Ubah sesuai jadwal Pre-ICO
-    const preicoBtn = document.getElementById("preico-btn");
+  // ===== Countdown Pre-ICO =====
+  const countdownDate = new Date("2025-12-31T23:59:59").getTime();
+  const preicoBtn = document.getElementById("preico-btn");
 
-    const countdownFunction = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
+  const countdownFunction = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
 
-      if (distance < 0) {
-        clearInterval(countdownFunction);
-        document.getElementById("timer").innerHTML = "⏳ Pre-ICO Ended!";
-        document.getElementById("timer").classList.remove("pulse");
-        preicoBtn.style.display = "none"; // Hide button when ended
-        return;
-      }
+    if (distance < 0) {
+      clearInterval(countdownFunction);
+      document.getElementById("timer").innerHTML = "✅ Listed on DEX Now!";
+      document.getElementById("timer").classList.remove("pulse");
+      preicoBtn.textContent = "✅ Trade on DEX Now!";
+      preicoBtn.href = "https://dex.coinawe.site";
+      preicoBtn.classList.replace("bg-sky-600", "bg-emerald-600");
+      return;
+    }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("timer").innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-    }, 1000);
-  </script>
+    document.getElementById("timer").innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+  }, 1000);
+</script>
 </body>
 </html>
