@@ -9,13 +9,14 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
-    /* ==== Navigation ==== */
+
+    /* Navigation */
     nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
     nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; }
     nav a { color:#f8fafc; font-weight:600; text-decoration:none; transition:0.3s; }
     nav a:hover { color:#38bdf8; }
 
-    /* ==== Coinawe Escrow Glow Button ==== */
+    /* Coinawe Escrow Glow Button */
     .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
     .glow-button::after {
       content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -28,7 +29,7 @@
       100% { transform: translate(150%,150%) rotate(25deg); }
     }
 
-    /* ==== AWEWE Token Pre-ICO ==== */
+    /* AWEWE Token Pre-ICO */
     header { text-align:center; padding:4rem 2rem; background:#020617; }
     header img { width:100px; margin-bottom:1rem; }
     header h1 { font-size:2.5rem; font-weight:800; color:#facc15; }
@@ -43,6 +44,15 @@
     footer { text-align:center; padding:2rem; background:transparent; color:#94a3b8; }
     footer.absolute { position:relative; bottom:0; }
     section { scroll-margin-top: 80px; }
+
+    /* ✅ Countdown Pulse Animation */
+    .pulse {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.85; }
+    }
   </style>
 </head>
 <body>
@@ -75,19 +85,28 @@
   <!-- ✅ AWEWE Token Pre-ICO Section -->
   <section id="awewe">
     <header data-aos="fade-down">
-  <img src="icon.png" alt="AWEWE Logo" class="mx-auto" />
-       <h1 class="mt-6">AWEWE Token</h1>
-  <a href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">
-    🚀 Join Pre-ICO via Telegram
-  </a>
-</header>
+      <img src="assets/logo-awewe.png" alt="AWEWE Logo" class="mx-auto" />
+      
+      <!-- Pre-ICO Button (will hide after countdown) -->
+      <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">
+        🚀 Join Pre-ICO via Telegram
+      </a>
+
+      <!-- Countdown -->
+      <div id="countdown" class="text-center text-yellow-400 font-bold text-xl mt-4">
+        Pre-ICO Ends In: <span id="timer" class="pulse">Loading...</span>
+      </div>
+
+      <h1 class="mt-6">AWEWE Token</h1>
+    </header>
+
     <div class="container">
       <section data-aos="fade-up">
         <h2 style="text-align:center;color:#facc15;">Tokenomics</h2>
         <div class="info-grid">
           <div><strong>Total Supply</strong><br/>100,000,000 AWEWE</div>
           <div><strong>Pre-ICO</strong><br/>25% (25,000,000)</div>
-          <div><strong>Price</strong><br/>Ton 0.0005 / AWEWE</div>
+          <div><strong>Price</strong><br/>Rp 20 / AWEWE</div>
           <div><strong>Funding Target</strong><br/>Rp 500,000,000</div>
         </div>
       </section>
@@ -112,7 +131,7 @@
     </div>
   </section>
 
-  <!-- ✅ Footer Updated -->
+  <!-- ✅ Footer -->
   <footer class="absolute bottom-4 text-slate-500 text-sm">
     &copy; 2025 COINAWE. All rights reserved.
   </footer>
@@ -120,6 +139,8 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    // ===== Newsletter to Telegram =====
     document.getElementById("newsletter-form").addEventListener("submit", function(e) {
       e.preventDefault();
       const email = document.getElementById("email").value;
@@ -131,6 +152,31 @@
         .catch(error => alert("Failed to send to Telegram."));
       this.reset();
     });
+
+    // ===== Countdown Pre-ICO =====
+    const countdownDate = new Date("2025-12-31T23:59:59").getTime(); // <-- Ubah sesuai jadwal Pre-ICO
+    const preicoBtn = document.getElementById("preico-btn");
+
+    const countdownFunction = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("timer").innerHTML = "⏳ Pre-ICO Ended!";
+        document.getElementById("timer").classList.remove("pulse");
+        preicoBtn.style.display = "none"; // Hide button when ended
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    }, 1000);
   </script>
 </body>
 </html>
