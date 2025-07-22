@@ -154,22 +154,26 @@
 
   // ===== Newsletter to Telegram =====
   document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let username = document.getElementById("username").value.trim();
-    if (!username.startsWith("@")) {
-      alert("Please enter a valid Telegram username (start with @)");
-      return;
-    }
+  e.preventDefault();
+  let username = document.getElementById("username").value.trim();
+  if (!username.startsWith("@")) {
+    alert("Please enter a valid Telegram username (start with @)");
+    return;
+  }
 
-    const message = `📥 New Investor%0A👤 Username: ${username}`;
-    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
-    const chatId = "-1002834298142"; 
+  const message = 
+    `📥 New Investor%0A` +
+    `👤 Username: ${username}%0A` +
+    `🌐 Website: https://coinawe.site/`;
 
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-      .then(() => alert("✅ Username successfully sent to the investor group!"))
-      .catch(() => alert("❌ Failed to send to Telegram."));
-    this.reset();
-  });
+  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+  const chatId = "-1002834298142"; 
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+    .then(() => alert("✅ Username successfully sent to the investor group!"))
+    .catch(() => alert("❌ Failed to send to Telegram."));
+  this.reset();
+});
 
   // ===== Countdown Pre-ICO =====
   const countdownDate = new Date("2025-12-31T23:59:59").getTime();
