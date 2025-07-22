@@ -3,50 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coinawe Escrow</title>
+  <title>Coinawe & AWEWE Token</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    .glow-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-    }
+    body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
+    /* ==== Navigation ==== */
+    nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
+    nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; }
+    nav a { color:#f8fafc; font-weight:600; text-decoration:none; transition:0.3s; }
+    nav a:hover { color:#38bdf8; }
+
+    /* ==== Coinawe Escrow Glow Button ==== */
+    .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
     .glow-button::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-      transform: rotate(25deg);
-      transition: all 0.4s ease;
-      opacity: 0;
+      transform: rotate(25deg); transition: all 0.4s ease; opacity: 0;
     }
-    .glow-button:hover::after {
-      opacity: 1;
-      animation: shine 1s ease;
-    }
+    .glow-button:hover::after { opacity: 1; animation: shine 1s ease; }
     @keyframes shine {
       0% { transform: translate(-50%,-50%) rotate(25deg); }
       100% { transform: translate(150%,150%) rotate(25deg); }
     }
+
+    /* ==== AWEWE Token Pre-ICO ==== */
+    header { text-align:center; padding:4rem 2rem; background:#020617; }
+    header img { width:100px; margin-bottom:1rem; }
+    header h1 { font-size:2.5rem; font-weight:800; color:#facc15; }
+    .cta-button { margin-top:1.5rem; padding:1rem 2rem; background:#38bdf8; color:#0f172a; border-radius:8px; text-decoration:none; font-weight:600; }
+    .container { max-width:900px; margin:auto; padding:2rem; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; background:#1e293b; padding:1.5rem; border-radius:10px; }
+    .info-grid div { background:#0f172a; padding:1rem; border-radius:8px; text-align:center; }
+    .roadmap li { background:#1e293b; padding:0.75rem 1rem; border-left:4px solid #facc15; border-radius:6px; margin-bottom:0.75rem; }
+    .newsletter-form { background:#1e293b; padding:2rem; border-radius:12px; text-align:center; max-width:500px; margin:auto; }
+    .newsletter-form input { padding:0.8rem; border:none; border-radius:8px; width:80%; margin-bottom:1rem; font-size:1rem; }
+    .newsletter-form button { padding:0.8rem 1.5rem; background:#facc15; color:#1e293b; border:none; border-radius:8px; font-weight:bold; cursor:pointer; }
+    footer { text-align:center; padding:2rem; background:transparent; color:#94a3b8; }
+    footer.absolute { position:relative; bottom:0; }
+    section { scroll-margin-top: 80px; }
   </style>
 </head>
-<body class="bg-slate-900 text-white flex flex-col items-center justify-center h-screen text-center">
-  <div class="max-w-lg">
-    <h1 class="text-4xl font-bold text-sky-400 mb-4">🚀 Coinawe Escrow</h1>
-    <p class="text-slate-300 mb-8">
-      Coinawe is a Telegram-based escrow platform powered by the 
-      <span class="text-emerald-400 font-semibold">AWEWE</span> utility token, 
-      offering secure, fast, and KYC-free transactions.
-    </p>
-    <div class="flex flex-col gap-4">
-      <a href="https://escrow.coinawe.site" class="glow-button bg-sky-600 hover:bg-sky-700 px-6 py-3 rounded-xl font-semibold shadow-lg">➕ Create Escrow</a>
-      <a href="whitepaper.html" class="glow-button bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl font-semibold shadow-lg">📜 Whitepaper</a>
-      <a href="https://t.me/coinawe" target="_blank" class="glow-button bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold shadow-lg">💬 Join Telegram</a>
+<body>
+
+  <!-- ✅ Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#escrow">Coinawe Escrow</a></li>
+      <li><a href="#awewe">AWEWE Token</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✅ Coinawe Escrow Section -->
+  <section id="escrow" class="bg-slate-900 text-white flex flex-col items-center justify-center min-h-screen text-center pt-24">
+    <div class="max-w-lg" data-aos="fade-up">
+      <h1 class="text-4xl font-bold text-sky-400 mb-4">🚀 Coinawe Escrow</h1>
+      <p class="text-slate-300 mb-8">
+        Coinawe is a Telegram-based escrow platform powered by the 
+        <span class="text-emerald-400 font-semibold">AWEWE</span> utility token, 
+        offering secure, fast, and KYC-free transactions.
+      </p>
+      <div class="flex flex-col gap-4">
+        <a href="https://escrow.coinawe.site" class="glow-button bg-sky-600 hover:bg-sky-700 px-6 py-3 rounded-xl font-semibold shadow-lg">➕ Create Escrow</a>
+        <a href="whitepaper.html" class="glow-button bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl font-semibold shadow-lg">📜 Whitepaper</a>
+        <a href="https://t.me/coinawe" target="_blank" class="glow-button bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold shadow-lg">💬 Join Telegram</a>
+      </div>
     </div>
-  </div>
-  <footer class="absolute bottom-4 text-slate-500 text-sm">&copy; 2025 COINAWE. All rights reserved.</footer>
+  </section>
+
+  <!-- ✅ AWEWE Token Pre-ICO Section -->
+  <section id="awewe">
+    <header data-aos="fade-down">
+      <img src="assets/logo-awewe.png" alt="AWEWE Logo" />
+      <h1>AWEWE Token</h1>
+      <a href="https://t.me/indo_escrow_bot" class="cta-button" target="_blank">🚀 Join Pre-ICO via Telegram</a>
+    </header>
+
+    <div class="container">
+      <section data-aos="fade-up">
+        <h2 style="text-align:center;color:#facc15;">Tokenomics</h2>
+        <div class="info-grid">
+          <div><strong>Total Supply</strong><br/>100,000,000 AWEWE</div>
+          <div><strong>Pre-ICO</strong><br/>25% (25,000,000)</div>
+          <div><strong>Price</strong><br/>Rp 20 / AWEWE</div>
+          <div><strong>Funding Target</strong><br/>Rp 500,000,000</div>
+        </div>
+      </section>
+
+      <section class="roadmap" data-aos="fade-left" style="margin-top:4rem;">
+        <h2 style="text-align:center;color:#facc15;">Project Roadmap</h2>
+        <ol>
+          <li><strong>Q2 2025</strong> – Pre-ICO & Token Launch</li>
+          <li><strong>Q3 2025</strong> – DEX Listing & Bot Integration</li>
+          <li><strong>Q4 2025</strong> – DAO Launch & Community Rewards</li>
+          <li><strong>2026</strong> – Ecosystem Expansion & CEX Listing</li>
+        </ol>
+      </section>
+
+      <section class="newsletter-form" data-aos="zoom-in" style="margin-top:4rem;">
+        <h2>Join Investor Newsletter</h2>
+        <form id="newsletter-form">
+          <input type="email" id="email" placeholder="Enter your email" required><br>
+          <button type="submit">Subscribe Now</button>
+        </form>
+      </section>
+    </div>
+  </section>
+
+  <!-- ✅ Footer Updated -->
+  <footer class="absolute bottom-4 text-slate-500 text-sm">
+    &copy; 2025 COINAWE. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const message = `📥 New Newsletter Subscriber%0A📧 Email: ${email}`;
+      const botToken = "8053150769:AAG32Ys8JnTcsBfFHZm0bO5lXtmCzLsFy-Q";
+      const chatId = "-1002697795354";
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+        .then(response => alert("Email successfully sent to the investor group!"))
+        .catch(error => alert("Failed to send to Telegram."));
+      this.reset();
+    });
+  </script>
 </body>
 </html>
