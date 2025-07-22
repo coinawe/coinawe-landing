@@ -202,5 +202,37 @@
       days + "d " + hours + "h " + minutes + "m " + seconds + "s";
   }, 1000);
 </script>
+  <script>
+  // Blokir klik kanan
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    alert("❌ Action disabled for security reasons!");
+  });
+
+  // Blokir beberapa shortcut developer tools
+  document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+      alert("❌ View Source is disabled!");
+      e.preventDefault();
+    }
+    if (e.key === "F12") {
+      alert("❌ Developer Tools is disabled!");
+      e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) {
+      alert("❌ Inspect Element is disabled!");
+      e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && (e.key === "j" || e.key === "J")) {
+      alert("❌ Console is disabled!");
+      e.preventDefault();
+    }
+  });
+
+  // (Opsional) Blokir drag teks & gambar
+  document.addEventListener("dragstart", function(e) {
+    e.preventDefault();
+  });
+</script>
 </body>
 </html>
