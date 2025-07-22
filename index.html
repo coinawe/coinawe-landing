@@ -35,18 +35,23 @@
       margin-bottom: 2rem;
       color: #38bdf8;
     }
-    .telegram-link, .whitepaper-link {
-      margin-top: 1.5rem;
+    .telegram-link, .whitepaper-link, .escrow-link {
+      margin-top: 1.2rem;
       display: inline-block;
-      background-color: #2ecc71;
-      color: white;
       padding: 12px 24px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
+      color: white;
+    }
+    .escrow-link {
+      background-color: #2ecc71;
     }
     .whitepaper-link {
       background-color: #1d4ed8;
+    }
+    .telegram-link {
+      background-color: #0088cc;
     }
     footer {
       position: absolute;
@@ -58,12 +63,12 @@
 </head>
 <body>
   <div class="logo">Coinawe</div>
-  <h1>🚧 Website Under Maintenance</h1>
-  <p>We are currently improving our platform to serve you better. Please check back soon!</p>
+  <h1>Welcome, Coinawe Escrow</h1>
+  <p>Coinawe is a Telegram-based escrow platform powered by the AWEWE utility token, offering secure, fast, and KYC-free transactions for the global Telegram community.</p>
 
-  <a href="https://t.me/coinawe" target="_blank" class="telegram-link">Join our Telegram</a><br>
-  <a href="whitepaper.html" target="_blank" class="whitepaper-link">📄 View Whitepaper</a>
-  <a href="https://escrow.coinawe.site" target="_blank" class="escrow-link">Join our Escrow</a><br>
+  <a href="https://escrow.coinawe.site" target="_blank" class="escrow-link">✅ Create Escrow</a><br>
+  <a href="whitepaper.html" target="_blank" class="whitepaper-link">📄 View Whitepaper</a><br>
+  <a href="https://t.me/coinawe" target="_blank" class="telegram-link">💬 Join our Telegram</a>
 
   <footer>
     &copy; 2025 COINAWE. All rights reserved.
@@ -82,7 +87,7 @@
     });
     setInterval(() => {
       if (window.outerWidth - window.innerWidth > 160) {
-        document.body.innerHTML = '<h1 style=\"color: red;\">⚠️ Developer tools are disabled on this site.</h1>';
+        document.body.innerHTML = '<h1 style="color: red;">⚠️ Developer tools are disabled on this site.</h1>';
       }
     }, 1000);
   </script>
