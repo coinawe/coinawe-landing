@@ -1,95 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coinawe – Maintenance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coinawe Escrow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #0f172a;
-      color: #f8fafc;
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #38bdf8;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #94a3b8;
-      max-width: 500px;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      color: #38bdf8;
-    }
-    .telegram-link, .whitepaper-link, .escrow-link {
-      margin-top: 1.2rem;
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      color: white;
-    }
-    .escrow-link {
-      background-color: #2ecc71;
-    }
-    .whitepaper-link {
-      background-color: #1d4ed8;
-    }
-    .telegram-link {
-      background-color: #0088cc;
-    }
-    footer {
+    .glow-button::after {
+      content: "";
       position: absolute;
-      bottom: 20px;
-      color: #64748b;
-      font-size: 0.9rem;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+      transform: rotate(25deg);
+      transition: all 0.4s ease;
+      opacity: 0;
+    }
+    .glow-button:hover::after {
+      opacity: 1;
+      animation: shine 1s ease;
+    }
+    @keyframes shine {
+      0% { transform: translate(-50%,-50%) rotate(25deg); }
+      100% { transform: translate(150%,150%) rotate(25deg); }
     }
   </style>
 </head>
-<body>
-  <div class="logo">Coinawe</div>
-  <h1>Welcome, Coinawe Escrow</h1>
-  <p>Coinawe is a Telegram-based escrow platform powered by the AWEWE utility token, offering secure, fast, and KYC-free transactions for the global Telegram community.</p>
-
-  <a href="https://escrow.coinawe.site" target="_blank" class="escrow-link">✅ Create Escrow</a><br>
-  <a href="whitepaper.html" target="_blank" class="whitepaper-link">📄 View Whitepaper</a><br>
-  <a href="https://t.me/coinawe" target="_blank" class="telegram-link">💬 Join our Telegram</a>
-
-  <footer>
-    &copy; 2025 COINAWE. All rights reserved.
-  </footer>
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && e.key.toUpperCase() === 'U')
-      ) {
-        e.preventDefault();
-      }
-    });
-    setInterval(() => {
-      if (window.outerWidth - window.innerWidth > 160) {
-        document.body.innerHTML = '<h1 style="color: red;">⚠️ Developer tools are disabled on this site.</h1>';
-      }
-    }, 1000);
-  </script>
+<body class="bg-slate-900 text-white flex flex-col items-center justify-center h-screen text-center">
+  <div class="max-w-lg">
+    <h1 class="text-4xl font-bold text-sky-400 mb-4">🚀 Coinawe Escrow</h1>
+    <p class="text-slate-300 mb-8">
+      Coinawe is a Telegram-based escrow platform powered by the 
+      <span class="text-emerald-400 font-semibold">AWEWE</span> utility token, 
+      offering secure, fast, and KYC-free transactions.
+    </p>
+    <div class="flex flex-col gap-4">
+      <a href="https://escrow.coinawe.site" class="glow-button bg-sky-600 hover:bg-sky-700 px-6 py-3 rounded-xl font-semibold shadow-lg">➕ Create Escrow</a>
+      <a href="whitepaper.html" class="glow-button bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl font-semibold shadow-lg">📜 View History</a>
+      <a href="https://t.me/coinawe" target="_blank" class="glow-button bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold shadow-lg">💬 Join Telegram</a>
+    </div>
+  </div>
+  <footer class="absolute bottom-4 text-slate-500 text-sm">&copy; 2025 COINAWE. All rights reserved.</footer>
 </body>
 </html>
