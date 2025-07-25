@@ -1,4 +1,4 @@
-﻿  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -14,12 +14,31 @@
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     th { background-color: #f0f0f0; }
     .footer { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #555; }
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .step {
+      background: #fff;
+      border-left: 4px solid #2196F3;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .step .q {
+      font-weight: bold;
+      color: #0a3d62;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
   <h1>COINAWE WHITEPAPER v1.0</h1>
 
-<div class="section">
+  <div class="section">
     <h2>❗ Problem Statement</h2>
     <p>Dalam ekosistem digital Indonesia, transaksi antara pengguna—baik jual beli crypto, jasa, atau barang—sering dilakukan secara informal melalui Telegram, WhatsApp, atau marketplace kecil. Masalah utama yang muncul adalah:</p>
     <ul>
@@ -84,30 +103,8 @@
       <tr><td>Ekosistem & Insentif</td><td>15.000.000</td><td>Airdrop, staking</td></tr>
       <tr><td>Listing & Market Maker</td><td>5.000.000</td><td>Listing dan likuiditas</td></tr>
       <tr><td>Treasury / Cadangan</td><td>5.000.000</td><td>Dana darurat, legal, audit</td></tr>
-<canvas id="tokenChart" width="300" height="300"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const ctx = document.getElementById('tokenChart').getContext('2d');
-new Chart(ctx, {
-  type: 'doughnut',
-  data: {
-    labels: ['Pre-ICO (25%)', 'Founder (15%)', 'Tim (10%)', 'Liquidity Pool (25%)', 'Ekosistem (15%)', 'Listing/MM (5%)', 'Treasury (5%)'],
-    datasets: [{
-      data: [25, 15, 10, 25, 15, 5, 5],
-      backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#9C27B0', '#FF5722', '#795548', '#607D8B'],
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: 'right' },
-      title: { display: true, text: 'Distribusi Token AWEWE' }
-    }
-  }
-});
-</script>
-
     </table>
+    <canvas id="tokenChart" width="300" height="300"></canvas>
     <h3>Utilitas Token:</h3>
     <ul>
       <li>Pembayaran biaya escrow</li>
@@ -121,59 +118,28 @@ new Chart(ctx, {
 
   <div class="section">
     <h2>🛠️ Roadmap</h2>
-<h2>🛣️ Roadmap Coinawe</h2>
-<div class="roadmap">
-  <div class="step">
-    <span class="q">Q1 2025</span>
-    <p>Pre-ICO & Token Launch</p>
-  </div>
-  <div class="step">
-    <span class="q">Q2 2025</span>
-    <p>Beta publik, sistem dispute & rating, kampanye komunitas</p>
-  </div>
-  <div class="step">
-    <span class="q">Q3 2026</span>
-    <p>DEX Listing & Bot Integration</p>
-  </div>
-  <div class="step">
-    <span class="q">Q4 2026</span>
-    <p>DAO Launch & Community Rewards</p>
-  </div>
-</div>
-/div>
-  <div class="step">
-    <span class="q">Q5 2026</span>
-    <p>Ecosystem Expansion & CEX Listing</p>
-  </div>
-</div>
-<style>
-.roadmap {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-.step {
-  background: #fff;
-  border-left: 4px solid #2196F3;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-.step .q {
-  font-weight: bold;
-  color: #0a3d62;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-</style>
-
-    <ul>
-      <li><strong>Q2 2025:</strong> Bot dasar, wallet internal, integrasi QRIS, token testnet</li>
-      <li><strong>Q3 2025:</strong> Beta publik, sistem dispute & rating, kampanye komunitas</li>
-      <li><strong>Q4 2025:</strong> Pre-ICO, website, multibahasa (ID/EN/RU)</li>
-      <li><strong>Q1 2026:</strong> Listing di DEX/CEX, voting DAO, ekspansi escrow</li>
-    </ul>
+    <div class="roadmap">
+      <div class="step">
+        <span class="q">Q1 2025</span>
+        <p>Pre-ICO & Token Launch</p>
+      </div>
+      <div class="step">
+        <span class="q">Q2 2025</span>
+        <p>Beta publik, sistem dispute & rating, kampanye komunitas</p>
+      </div>
+      <div class="step">
+        <span class="q">Q3 2026</span>
+        <p>DEX Listing & Bot Integration</p>
+      </div>
+      <div class="step">
+        <span class="q">Q4 2026</span>
+        <p>DAO Launch & Community Rewards</p>
+      </div>
+      <div class="step">
+        <span class="q">Q5 2026</span>
+        <p>Ecosystem Expansion & CEX Listing</p>
+      </div>
+    </div>
   </div>
 
   <div class="section">
@@ -230,5 +196,27 @@ new Chart(ctx, {
     <p>Coinawe - Aman • Cepat • Terpercaya</p>
     <p>Telegram: @coinawe | website: coinawe.site</p>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('tokenChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Pre-ICO (25%)', 'Founder (15%)', 'Tim (10%)', 'Liquidity Pool (25%)', 'Ekosistem (15%)', 'Listing/MM (5%)', 'Treasury (5%)'],
+        datasets: [{
+          data: [25, 15, 10, 25, 15, 5, 5],
+          backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#9C27B0', '#FF5722', '#795548', '#607D8B'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'right' },
+          title: { display: true, text: 'Distribusi Token AWEWE' }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
