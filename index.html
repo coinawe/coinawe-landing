@@ -9,52 +9,21 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
-
     nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
-    nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; list-style:none; }
+    nav ul { display:flex; justify-content:center; gap:1rem; padding:1rem; flex-wrap:wrap; }
+    nav a { padding:0.5rem 1rem; background:#1e293b; color:#f8fafc; border-radius:8px; font-weight:600; text-decoration:none; transition:0.3s; }
+    nav a:hover { background:#38bdf8; color:#0f172a; box-shadow:0 4px 10px rgba(56,189,248,0.3); }
 
-    /* ✅ Modern Navigation Buttons */
-    .nav-button {
-      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-      color: #0f172a;
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .nav-button:hover {
-      background: linear-gradient(90deg, #0ea5e9, #0284c7);
-      color: #f8fafc;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.6);
-    }
-
-    /* ✅ Glow Shine Effect */
-    .nav-button::after {
-      content: ""; position: absolute; top: -50%; left: -50%;
-      width: 200%; height: 200%;
+    .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
+    .glow-button::after {
+      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
       transform: rotate(25deg); transition: all 0.4s ease; opacity: 0;
     }
-    .nav-button:hover::after {
-      opacity: 1; animation: shine 1s ease;
-    }
+    .glow-button:hover::after { opacity: 1; animation: shine 1s ease; }
     @keyframes shine {
       0% { transform: translate(-50%,-50%) rotate(25deg); }
       100% { transform: translate(150%,150%) rotate(25deg); }
-    }
-
-    /* ✅ Active State */
-    .nav-button.active {
-      background: linear-gradient(90deg, #facc15, #eab308);
-      color: #0f172a;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
-      transform: scale(1.05);
     }
 
     header { text-align:center; padding:4rem 2rem; background:#020617; }
@@ -68,16 +37,20 @@
     .info-grid div { background:#0f172a; padding:1rem; border-radius:8px; text-align:center; }
     .roadmap li { background:#1e293b; padding:0.75rem 1rem; border-left:4px solid #facc15; border-radius:6px; margin-bottom:0.75rem; }
 
-    .newsletter-form { background:#1e293b; padding:2rem; border-radius:12px; text-align:center; max-width:500px; margin:auto; }
-    .newsletter-form input {
+    .newsletter-form, .contact-form { background:#1e293b; padding:2rem; border-radius:12px; text-align:center; max-width:500px; margin:auto; }
+    .newsletter-form input, .contact-form input, .contact-form textarea {
       padding:0.8rem; border:none; border-radius:8px; width:80%; margin-bottom:1rem;
-      font-size:1rem; background:#ffffff; color:#0f172a; text-align:center;
-      box-shadow:0 2px 5px rgba(0,0,0,0.3);
+      font-size:1rem; background:#ffffff; color:#0f172a; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);
     }
-    .newsletter-form input::placeholder { color:#64748b; }
-    .newsletter-form button {
-      padding:0.8rem 1.5rem; background:#facc15; color:#1e293b;
-      border:none; border-radius:8px; font-weight:bold; cursor:pointer;
+    .newsletter-form input::placeholder, .contact-form input::placeholder, .contact-form textarea::placeholder {
+      color:#64748b;
+    }
+    .newsletter-form button, .contact-form button {
+      padding:0.8rem 1.5rem; background:#facc15; color:#1e293b; border:none;
+      border-radius:8px; font-weight:bold; cursor:pointer; transition:0.3s;
+    }
+    .newsletter-form button:hover, .contact-form button:hover {
+      background:#eab308;
     }
 
     footer { text-align:center; padding:2rem; background:transparent; color:#94a3b8; }
@@ -96,14 +69,17 @@
   <!-- ✅ Navigation -->
   <nav>
     <ul>
-      <li><button class="nav-button glow-button" data-target="escrow">🚀 Coinawe Escrow</button></li>
-      <li><button class="nav-button glow-button" data-target="awewe">💰 AWEWE Token</button></li>
+      <li><a href="#escrow">🚀 Coinawe Escrow</a></li>
+      <li><a href="#awewe">💰 AWEWE Token</a></li>
+      <li><a href="#preico">🔥 Pre-ICO</a></li>
+      <li><a href="#roadmap">📍 Roadmap</a></li>
+      <li><a href="#contact">📨 Contact Us</a></li>
     </ul>
   </nav>
 
   <!-- ✅ Coinawe Escrow Section -->
-  <section id="escrow" class="bg-slate-900 text-white flex flex-col items-center justify-center min-h-screen text-center pt-24">
-    <div class="max-w-lg" data-aos="fade-up">
+  <section id="escrow" class="bg-slate-900 text-white flex flex-col items-center justify-center min-h-screen text-center pt-24" data-aos="fade-up">
+    <div class="max-w-lg">
       <h1 class="text-4xl font-bold text-sky-400 mb-4">🚀 Coinawe Escrow</h1>
       <p class="text-slate-300 mb-8">
         Coinawe is a Telegram-based escrow platform powered by the 
@@ -119,16 +95,17 @@
   </section>
 
   <!-- ✅ AWEWE Token Pre-ICO Section -->
-  <section id="awewe">
-    <header data-aos="fade-down">
+  <section id="awewe" data-aos="fade-right">
+    <header>
       <img src="icon.png" alt="AWEWE Logo" class="mx-auto" />
-      <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">🚀 Join Pre-ICO via Telegram</a>
+      <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">
+        🚀 Join Pre-ICO via Telegram
+      </a>
       <div id="countdown" class="text-center text-yellow-400 font-bold text-xl mt-4">
         Pre-ICO Ends In: <span id="timer" class="pulse">Loading...</span>
       </div>
       <h1 class="mt-6">AWEWE Token</h1>
     </header>
-
     <div class="container">
       <section data-aos="fade-up">
         <h2 style="text-align:center;color:#facc15;">Tokenomics</h2>
@@ -140,7 +117,8 @@
         </div>
       </section>
 
-      <section class="roadmap" data-aos="fade-left" style="margin-top:4rem;">
+      <!-- ✅ Roadmap Section -->
+      <section id="roadmap" class="roadmap" data-aos="fade-left" style="margin-top:4rem;">
         <h2 style="text-align:center;color:#facc15;">Project Roadmap</h2>
         <ol>
           <li><strong>Q2 2025</strong> – Pre-ICO & Token Launch</li>
@@ -151,7 +129,7 @@
       </section>
 
       <!-- ✅ Investor Form -->
-      <section class="newsletter-form" data-aos="zoom-in" style="margin-top:4rem;">
+      <section id="preico" class="newsletter-form" data-aos="zoom-in" style="margin-top:4rem;">
         <h2>Join Investor Newsletter</h2>
         <form id="newsletter-form">
           <input type="text" id="username" placeholder="@YourTelegramUsername" required><br>
@@ -161,13 +139,24 @@
     </div>
   </section>
 
+  <!-- ✅ Contact Us Section -->
+  <section id="contact" class="contact-form" data-aos="zoom-in" style="margin-top:4rem;">
+    <h2>📨 Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required><br>
+      <input type="text" id="contact-username" placeholder="@YourTelegramUsername" required><br>
+      <textarea id="message" rows="3" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
   <footer class="absolute bottom-4 text-slate-500 text-sm">
     &copy; 2025 COINAWE. All rights reserved.
   </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init();
+  AOS.init({ duration: 800, easing: "ease-in-out" });
 
   // ===== Newsletter to Telegram =====
   document.getElementById("newsletter-form").addEventListener("submit", function(e) {
@@ -179,9 +168,28 @@
     }
     const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
     const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
-    const chatId = "-1002834298142";
+    const chatId = "-1002834298142"; 
     fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
       .then(() => alert("✅ Username successfully sent to the investor group!"))
+      .catch(() => alert("❌ Failed to send to Telegram."));
+    this.reset();
+  });
+
+  // ===== Contact Us to Telegram =====
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let name = document.getElementById("name").value.trim();
+    let contactUsername = document.getElementById("contact-username").value.trim();
+    let userMessage = document.getElementById("message").value.trim();
+    if (!contactUsername.startsWith("@")) {
+      alert("Please enter a valid Telegram username (start with @)");
+      return;
+    }
+    const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
+    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+    const chatId = "-1002834298142"; 
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(() => alert("✅ Message sent successfully!"))
       .catch(() => alert("❌ Failed to send to Telegram."));
     this.reset();
   });
@@ -208,34 +216,16 @@
     document.getElementById("timer").innerHTML =
       days + "d " + hours + "h " + minutes + "m " + seconds + "s";
   }, 1000);
-
-  // ✅ Smooth Scroll + Active State
-  document.querySelectorAll(".nav-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelector(`#${btn.dataset.target}`).scrollIntoView({ behavior: "smooth" });
-    });
-  });
-  const sections = document.querySelectorAll("section[id]");
-  const navButtons = document.querySelectorAll(".nav-button");
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(sec => {
-      const sectionTop = sec.offsetTop - 100;
-      if (scrollY >= sectionTop) current = sec.getAttribute("id");
-    });
-    navButtons.forEach(btn => {
-      btn.classList.remove("active");
-      if (btn.dataset.target === current) btn.classList.add("active");
-    });
-  });
-
-  // ===== Security Blocks
+</script>
+<script>
+  // Blokir klik kanan & DevTools (Opsional)
   document.addEventListener("contextmenu", e => { e.preventDefault(); alert("❌ Action disabled for security reasons!"); });
   document.addEventListener("keydown", e => {
-    if (e.ctrlKey && (e.key === "u" || e.key === "U")) { alert("❌ View Source is disabled!"); e.preventDefault(); }
-    if (e.key === "F12") { alert("❌ Developer Tools is disabled!"); e.preventDefault(); }
-    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) { alert("❌ Inspect Element is disabled!"); e.preventDefault(); }
-    if (e.ctrlKey && e.shiftKey && (e.key === "j" || e.key === "J")) { alert("❌ Console is disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && (e.key === "u" || e.key === "U")) { alert("❌ View Source disabled!"); e.preventDefault(); }
+    if (e.key === "F12") { alert("❌ Developer Tools disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J")) { 
+      alert("❌ Developer Tools disabled!"); e.preventDefault(); 
+    }
   });
   document.addEventListener("dragstart", e => e.preventDefault());
 </script>
