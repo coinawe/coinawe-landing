@@ -11,20 +11,50 @@
     body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
 
     nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
-    nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; }
-    nav a { color:#f8fafc; font-weight:600; text-decoration:none; transition:0.3s; }
-    nav a:hover { color:#38bdf8; }
+    nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; list-style:none; }
 
-    .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
-    .glow-button::after {
-      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    /* ✅ Modern Navigation Buttons */
+    .nav-button {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: #0f172a;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-button:hover {
+      background: linear-gradient(90deg, #0ea5e9, #0284c7);
+      color: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.6);
+    }
+
+    /* ✅ Glow Shine Effect */
+    .nav-button::after {
+      content: ""; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
       transform: rotate(25deg); transition: all 0.4s ease; opacity: 0;
     }
-    .glow-button:hover::after { opacity: 1; animation: shine 1s ease; }
+    .nav-button:hover::after {
+      opacity: 1; animation: shine 1s ease;
+    }
     @keyframes shine {
       0% { transform: translate(-50%,-50%) rotate(25deg); }
       100% { transform: translate(150%,150%) rotate(25deg); }
+    }
+
+    /* ✅ Active State */
+    .nav-button.active {
+      background: linear-gradient(90deg, #facc15, #eab308);
+      color: #0f172a;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
+      transform: scale(1.05);
     }
 
     header { text-align:center; padding:4rem 2rem; background:#020617; }
@@ -40,29 +70,21 @@
 
     .newsletter-form { background:#1e293b; padding:2rem; border-radius:12px; text-align:center; max-width:500px; margin:auto; }
     .newsletter-form input {
-  padding:0.8rem;
-  border:none;
-  border-radius:8px;
-  width:80%;
-  margin-bottom:1rem;
-  font-size:1rem;
-  background:#ffffff;       /* ✅ Putih */
-  color:#0f172a;            /* ✅ Teks hitam/gelap */
-  text-align:center;
-  box-shadow:0 2px 5px rgba(0,0,0,0.3);
-}
-.newsletter-form input::placeholder {
-  color:#64748b;            /* ✅ Placeholder abu-abu */
-}
-    .newsletter-form button { padding:0.8rem 1.5rem; background:#facc15; color:#1e293b; border:none; border-radius:8px; font-weight:bold; cursor:pointer; }
+      padding:0.8rem; border:none; border-radius:8px; width:80%; margin-bottom:1rem;
+      font-size:1rem; background:#ffffff; color:#0f172a; text-align:center;
+      box-shadow:0 2px 5px rgba(0,0,0,0.3);
+    }
+    .newsletter-form input::placeholder { color:#64748b; }
+    .newsletter-form button {
+      padding:0.8rem 1.5rem; background:#facc15; color:#1e293b;
+      border:none; border-radius:8px; font-weight:bold; cursor:pointer;
+    }
 
     footer { text-align:center; padding:2rem; background:transparent; color:#94a3b8; }
     footer.absolute { position:relative; bottom:0; }
     section { scroll-margin-top: 80px; }
 
-    .pulse {
-      animation: pulse 1.5s infinite;
-    }
+    .pulse { animation: pulse 1.5s infinite; }
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.15); opacity: 0.85; }
@@ -74,8 +96,8 @@
   <!-- ✅ Navigation -->
   <nav>
     <ul>
-      <li><a href="#escrow">Coinawe Escrow</a></li>
-      <li><a href="#awewe">AWEWE Token</a></li>
+      <li><button class="nav-button glow-button" data-target="escrow">🚀 Coinawe Escrow</button></li>
+      <li><button class="nav-button glow-button" data-target="awewe">💰 AWEWE Token</button></li>
     </ul>
   </nav>
 
@@ -100,15 +122,10 @@
   <section id="awewe">
     <header data-aos="fade-down">
       <img src="icon.png" alt="AWEWE Logo" class="mx-auto" />
-      
-      <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">
-        🚀 Join Pre-ICO via Telegram
-      </a>
-
+      <a id="preico-btn" href="https://t.me/indo_escrow_bot" class="cta-button inline-block mt-4" target="_blank">🚀 Join Pre-ICO via Telegram</a>
       <div id="countdown" class="text-center text-yellow-400 font-bold text-xl mt-4">
         Pre-ICO Ends In: <span id="timer" class="pulse">Loading...</span>
       </div>
-
       <h1 class="mt-6">AWEWE Token</h1>
     </header>
 
@@ -154,35 +171,27 @@
 
   // ===== Newsletter to Telegram =====
   document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  let username = document.getElementById("username").value.trim();
-  if (!username.startsWith("@")) {
-    alert("Please enter a valid Telegram username (start with @)");
-    return;
-  }
-
-  const message = 
-    `📥 New Investor%0A` +
-    `👤 Username: ${username}%0A` +
-    `🌐 Website: https://coinawe.site/`;
-
-  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
-  const chatId = "-1002834298142"; 
-
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-    .then(() => alert("✅ Username successfully sent to the investor group!"))
-    .catch(() => alert("❌ Failed to send to Telegram."));
-  this.reset();
-});
+    e.preventDefault();
+    let username = document.getElementById("username").value.trim();
+    if (!username.startsWith("@")) {
+      alert("Please enter a valid Telegram username (start with @)");
+      return;
+    }
+    const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
+    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+    const chatId = "-1002834298142";
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(() => alert("✅ Username successfully sent to the investor group!"))
+      .catch(() => alert("❌ Failed to send to Telegram."));
+    this.reset();
+  });
 
   // ===== Countdown Pre-ICO =====
   const countdownDate = new Date("2025-12-31T23:59:59").getTime();
   const preicoBtn = document.getElementById("preico-btn");
-
   const countdownFunction = setInterval(function () {
     const now = new Date().getTime();
     const distance = countdownDate - now;
-
     if (distance < 0) {
       clearInterval(countdownFunction);
       document.getElementById("timer").innerHTML = "✅ Listed on DEX Now!";
@@ -192,47 +201,43 @@
       preicoBtn.classList.replace("bg-sky-600", "bg-emerald-600");
       return;
     }
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
     document.getElementById("timer").innerHTML =
       days + "d " + hours + "h " + minutes + "m " + seconds + "s";
   }, 1000);
-</script>
-  <script>
-  // Blokir klik kanan
-  document.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-    alert("❌ Action disabled for security reasons!");
+
+  // ✅ Smooth Scroll + Active State
+  document.querySelectorAll(".nav-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelector(`#${btn.dataset.target}`).scrollIntoView({ behavior: "smooth" });
+    });
+  });
+  const sections = document.querySelectorAll("section[id]");
+  const navButtons = document.querySelectorAll(".nav-button");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+      const sectionTop = sec.offsetTop - 100;
+      if (scrollY >= sectionTop) current = sec.getAttribute("id");
+    });
+    navButtons.forEach(btn => {
+      btn.classList.remove("active");
+      if (btn.dataset.target === current) btn.classList.add("active");
+    });
   });
 
-  // Blokir beberapa shortcut developer tools
-  document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-      alert("❌ View Source is disabled!");
-      e.preventDefault();
-    }
-    if (e.key === "F12") {
-      alert("❌ Developer Tools is disabled!");
-      e.preventDefault();
-    }
-    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) {
-      alert("❌ Inspect Element is disabled!");
-      e.preventDefault();
-    }
-    if (e.ctrlKey && e.shiftKey && (e.key === "j" || e.key === "J")) {
-      alert("❌ Console is disabled!");
-      e.preventDefault();
-    }
+  // ===== Security Blocks
+  document.addEventListener("contextmenu", e => { e.preventDefault(); alert("❌ Action disabled for security reasons!"); });
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && (e.key === "u" || e.key === "U")) { alert("❌ View Source is disabled!"); e.preventDefault(); }
+    if (e.key === "F12") { alert("❌ Developer Tools is disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) { alert("❌ Inspect Element is disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && (e.key === "j" || e.key === "J")) { alert("❌ Console is disabled!"); e.preventDefault(); }
   });
-
-  // (Opsional) Blokir drag teks & gambar
-  document.addEventListener("dragstart", function(e) {
-    e.preventDefault();
-  });
+  document.addEventListener("dragstart", e => e.preventDefault());
 </script>
 </body>
 </html>
