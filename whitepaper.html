@@ -1,0 +1,222 @@
+﻿
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitepaper Coinawe v1.0</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 2rem; background-color: #f9f9f9; color: #222; }
+    h1, h2, h3 { color: #0a3d62; }
+    h1 { text-align: center; }
+    .section { margin-bottom: 2rem; }
+    ul { margin-top: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; }
+    .footer { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #555; }
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .step {
+      background: #fff;
+      border-left: 4px solid #2196F3;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .step .q {
+      font-weight: bold;
+      color: #0a3d62;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>COINAWE WHITEPAPER v1.0</h1>
+
+  <div class="section">
+    <h2>❗ Problem Statement</h2>
+    <p>Dalam ekosistem digital Indonesia, transaksi antara pengguna—baik jual beli crypto, jasa, atau barang—sering dilakukan secara informal melalui Telegram, WhatsApp, atau marketplace kecil. Masalah utama yang muncul adalah:</p>
+    <ul>
+      <li>Tidak ada jaminan keamanan atau escrow</li>
+      <li>Tingginya risiko penipuan dan pelarian dana</li>
+      <li>Proses verifikasi KYC yang rumit dan menghalangi inklusi</li>
+      <li>Tidak ada sistem reputasi komunitas yang transparan</li>
+    </ul>
+    <p>Coinawe hadir sebagai solusi escrow peer-to-peer berbasis Telegram, tanpa KYC, mendukung multi-token (TON, USDT, IDR, AWEWE), dan sistem reputasi otomatis.</p>
+  </div>
+
+  <div class="section">
+    <h2>📌 Project Overview</h2>
+    <p>Coinawe adalah platform escrow berbasis Telegram dengan token utilitas AWEWE, fokus pada transaksi aman, cepat, dan tanpa KYC untuk komunitas Indonesia.</p>
+    <h3>Jenis-Jenis Escrow yang Didukung:</h3>
+    <ul>
+      <li>Jual beli crypto antar pengguna</li>
+      <li>Transaksi fiat (IDR) via bank/e-wallet</li>
+      <li>Jasa digital & freelance</li>
+      <li>Sistem DP (Down Payment) proyek</li>
+      <li>Transaksi internasional via crypto</li>
+      <li>Lelang komunitas</li>
+      <li>NFT & aset digital</li>
+      <li>Donasi & dana kolektif</li>
+      <li>DAO voting escrow</li>
+      <li>Tiket & akses event</li>
+      <li>Sistem afiliasi & komisi</li>
+    </ul>
+    <h3>Fitur Pendukung Coinawe:</h3>
+    <ul>
+      <li>Wallet internal (AWEWE TOKEN)</li>
+      <li>Fee dinamis (0.5%–5%) berdasarkan reputasi</li>
+      <li>Sistem reputasi & badge user</li>
+      <li>Dispute & live chat dalam bot</li>
+      <li>Inline keyboard UX</li>
+      <li>Semua transaksi otomatis tercatat</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🌟 Visi dan Misi</h2>
+    <p><strong>Visi:</strong> Menjadi solusi escrow kripto teraman dan termudah bagi pengguna Telegram.</p>
+    <p><strong>Misi:</strong></p>
+    <ul>
+      <li>Mendukung berbagai jenis transaksi</li>
+      <li>Membangun ekosistem escrow yang transparan dan terpercaya</li>
+      <li>Menyediakan sistem reputasi tanpa KYC</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2> Token AWEWE (AWW)</h2>
+    <p><strong>Total Supply:</strong> 100.000.000 AWEWE<br />
+    <strong>Network:</strong> TON (Jetton v2), BSC (planned)</p>
+    <h3>Distribusi Token:</h3>
+    <table>
+      <tr><th>Alokasi</th><th>Jumlah</th><th>Keterangan</th></tr>
+      <tr><td>Pre-ICO</td><td>25.000.000</td><td>Dijual kepada publik</td></tr>
+      <tr><td>Founder</td><td>15.000.000</td><td>Tidak dijual saat pre-ICO</td></tr>
+      <tr><td>Tim Pengembang</td><td>10.000.000</td><td>Dikunci 6–12 bulan</td></tr>
+      <tr><td>Liquidity Pool</td><td>25.000.000</td><td>DEX/CEX</td></tr>
+      <tr><td>Ekosistem & Insentif</td><td>15.000.000</td><td>Airdrop, staking</td></tr>
+      <tr><td>Listing & Market Maker</td><td>5.000.000</td><td>Listing dan likuiditas</td></tr>
+      <tr><td>Treasury / Cadangan</td><td>5.000.000</td><td>Dana darurat, legal, audit</td></tr>
+    </table>
+    <canvas id="tokenChart" width="300" height="300"></canvas>
+    <h3>Utilitas Token:</h3>
+    <ul>
+      <li>Pembayaran biaya escrow</li>
+      <li>Diskon fee hingga 80%</li>
+      <li>Transfer antar pengguna</li>
+      <li>Voting komunitas DAO</li>
+      <li>Reward loyalitas & staking</li>
+      <li>Lelang berbasis token</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>👣 Roadmap</h2>
+    <div class="roadmap">
+      <div class="step">
+        <span class="q">Q1 2025</span>
+        <p>Pre-ICO & Token Launch</p>
+      </div>
+      <div class="step">
+        <span class="q">Q2 2025</span>
+        <p>Beta publik, sistem dispute & rating, kampanye komunitas</p>
+      </div>
+      <div class="step">
+        <span class="q">Q3 2026</span>
+        <p>DEX Listing & Bot Integration</p>
+      </div>
+      <div class="step">
+        <span class="q">Q4 2026</span>
+        <p>DAO Launch & Community Rewards</p>
+      </div>
+      <div class="step">
+        <span class="q">Q5 2026</span>
+        <p>Ecosystem Expansion & CEX Listing</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💰 Struktur Pendanaan Pre-ICO</h2>
+    <p><strong>Total Target:</strong> Rp 500.000.000 (~USD 32.000)</p>
+    <table>
+      <tr><th>Kategori</th><th>Jumlah (Rp)</th><th>Persentase</th></tr>
+      <tr><td>Dev & Backend</td><td>150.000.000</td><td>30%</td></tr>
+      <tr><td>Audit & Infrastruktur</td><td>50.000.000</td><td>10%</td></tr>
+      <tr><td>Branding & UI/UX</td><td>25.000.000</td><td>5%</td></tr>
+      <tr><td>Pemasaran & Komunitas</td><td>100.000.000</td><td>20%</td></tr>
+      <tr><td>Tim & Gaji</td><td>75.000.000</td><td>15%</td></tr>
+      <tr><td>Legal & Perizinan</td><td>30.000.000</td><td>6%</td></tr>
+      <tr><td>Dana Cadangan</td><td>70.000.000</td><td>14%</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2> Tim & Komunitas</h2>
+    <ul>
+      <li>Founder: @marfhino</li>
+      <li>Co-Founder: @fitraganteng</li>
+      <li>Admin Komunitas: @bakenkhonsurl, @Rafki45</li>
+      <li>Channel: @coinawe</li>
+      <li>Bot: @coinawebot</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📊 Status Proyek (Juli 2025)</h2>
+    <ul>
+      <li>Bot Telegram escrow aktif</li>
+      <li>Escrow mendukung crypto, fiat, jasa, barang, DP, NFT</li>
+      <li>Wallet internal TON/USDT/AWEWE/IDR sudah berjalan</li>
+      <li>Sistem reputasi dan dispute live</li>
+      <li>Token AWEWE aktif di testnet (Jetton v2)</li>
+      <li>Website: <a href="https://coinawe.site">https://coinawe.site</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📄 Legal & Ketentuan</h2>
+    <h3>Aktivitas Terlarang:</h3>
+    <ul>
+      <li>Senjata, narkoba, bahan ilegal</li>
+      <li>Barang curian, file sensitif</li>
+      <li>Skema ponzi atau penipuan</li>
+    </ul>
+    <p>Semua transaksi dicatat otomatis dan dapat diaudit. Pelanggaran akan ditindak sesuai hukum berlaku.</p>
+  </div>
+
+  <div class="footer">
+    <p>Coinawe - Aman • Cepat • Terpercaya</p>
+    <p>Telegram: @coinawe | website: coinawe.site</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('tokenChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Pre-ICO (25%)', 'Founder (15%)', 'Tim (10%)', 'Liquidity Pool (25%)', 'Ekosistem (15%)', 'Listing/MM (5%)', 'Treasury (5%)'],
+        datasets: [{
+          data: [25, 15, 10, 25, 15, 5, 5],
+          backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#9C27B0', '#FF5722', '#795548', '#607D8B'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'right' },
+          title: { display: true, text: 'Distribusi Token AWEWE' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

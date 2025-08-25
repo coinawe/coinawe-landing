@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coinawe & AWEWE Token</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    body { font-family:'Inter', sans-serif; background:#0f172a; color:#f8fafc; scroll-behavior: smooth; }
+    nav { position:fixed; top:0; left:0; width:100%; background:#020617cc; backdrop-filter: blur(6px); z-index:50; }
+    nav ul { display:flex; justify-content:center; gap:0.5rem; padding:0.8rem; flex-wrap: wrap; }
+    nav a {
+      color:#f8fafc; font-weight:600; text-decoration:none; padding:0.4rem 0.8rem;
+      background:#1e293b; border-radius:6px; transition:0.3s; font-size:0.9rem;
+    }
+    nav a:hover { background:#38bdf8; color:#0f172a; }
+    .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease-in-out; }
+    .glow-button::after {
+      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+      transform: rotate(25deg); transition: all 0.4s ease; opacity: 0;
+    }
+    .glow-button:hover::after { opacity: 1; animation: shine 1s ease; }
+    @keyframes shine {
+      0% { transform: translate(-50%,-50%) rotate(25deg); }
+      100% { transform: translate(150%,150%) rotate(25deg); }
+    }
+    header { text-align:center; padding:4rem 2rem; background:#020617; }
+    header img { width:80px; margin-bottom:1rem; }
+    header h1 { font-size:2rem; font-weight:800; color:#facc15; }
+    .cta-button {
+      margin-top:1rem; padding:0.8rem 1.5rem; background:#38bdf8; color:#0f172a;
+      border-radius:8px; text-decoration:none; font-weight:600; transition:0.3s; display:inline-block;
+    }
+    .cta-button:hover { background:#0ea5e9; }
+    .container { max-width:900px; margin:auto; padding:2rem 1rem; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; background:#1e293b; padding:1rem; border-radius:10px; }
+    .info-grid div { background:#0f172a; padding:0.8rem; border-radius:6px; text-align:center; font-size:0.9rem; }
+    .roadmap li { background:#1e293b; padding:0.6rem 0.8rem; border-left:4px solid #facc15; border-radius:6px; margin-bottom:0.6rem; font-size:0.9rem; }
+    .newsletter-form {
+      background:#1e293b; padding:1.5rem; border-radius:10px; text-align:center;
+      max-width:420px; margin:auto;
+    }
+    .newsletter-form input {
+      padding:0.7rem; border:none; border-radius:6px; width:90%; margin-bottom:0.8rem;
+      font-size:0.9rem; background:#ffffff; color:#0f172a; text-align:center;
+    }
+    .newsletter-form button {
+      padding:0.7rem 1.2rem; background:#facc15; color:#1e293b;
+      border:none; border-radius:6px; font-weight:bold; cursor:pointer; font-size:0.9rem;
+    }
+    footer { text-align:center; padding:1.5rem; background:transparent; color:#94a3b8; font-size:0.8rem; }
+    section { scroll-margin-top: 70px; }
+    .pulse { animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.85; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#escrow">🚀 Dashboard</a></li>
+    <li><a href="#awewe">🔥 Pre-ICO</a></li>
+    <li><a href="#tokenomics">💰 AWEWE</a></li>
+    <li><a href="#roadmap">📝 Roadmap</a></li>
+    <li><a href="https://t.me/coinawebot" class="bg-emerald-600 hover:bg-emerald-700 text-white">➕ Create Escrow</a></li>
+    <li><a href="#contact">📩 Contact</a></li>
+  </ul>
+</nav>
+
+<section id="escrow" class="bg-slate-900 text-white flex flex-col items-center justify-center min-h-screen text-center pt-24 relative">
+  <div class="max-w-sm sm:max-w-lg" data-aos="fade-up">
+    <h1 class="text-3xl sm:text-4xl font-bold text-sky-400 mb-4">🚀 Coinawe Escrow</h1>
+    <p class="text-slate-300 mb-6 text-sm sm:text-base px-3">
+      Coinawe is a Telegram-based escrow platform powered by the 
+      <span class="text-emerald-400 font-semibold">AWEWE</span> token, 
+      offering secure, fast, and KYC-free transactions.
+    </p>
+    <div class="flex flex-col gap-3">
+      <a href="https://guide.coinawe.site/" class="glow-button bg-purple-600 hover:bg-purple-700 px-5 py-2.5 rounded-lg font-semibold shadow-md text-sm">📖 Panduan & FAQ</a>
+      <a id="preico-btn" href="https://t.me/indo_escrow_bot" target="_blank" class="glow-button bg-amber-500 hover:bg-amber-600 px-5 py-2.5 rounded-lg font-semibold shadow-md text-sm">🔥 Join Pre-ICO</a>
+      <a href="https://t.me/coinawebot" class="glow-button bg-sky-600 hover:bg-sky-700 px-5 py-2.5 rounded-lg font-semibold shadow-md text-sm">➕ Create Escrow</a>
+      <a href="whitepaper.html" class="glow-button bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 rounded-lg font-semibold shadow-md text-sm">📜 Whitepaper</a>
+      <a href="https://t.me/coinawe" target="_blank" class="glow-button bg-blue-500 hover:bg-blue-600 px-5 py-2.5 rounded-lg font-semibold shadow-md text-sm">💬 Join Telegram</a>
+    </div>
+  </div>
+  <a href="#awewe" class="absolute bottom-6 animate-bounce flex flex-col items-center z-50">
+    <span class="text-slate-400 text-xs mb-1">Scroll Down</span>
+    <svg class="w-7 h-7 text-sky-400 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </a>
+</section>
+
+<section id="awewe">
+  
+  <div class="container py-8" data-aos="fade-up">
+    <a href="https://t.me/indo_escrow_bot" target="_blank" class="block rounded-lg overflow-hidden shadow-lg hover:shadow-sky-400/40 transition-shadow duration-300">
+      <img src="banner.png" alt="Coinawe Presale Banner" class="w-full h-auto">
+    </a>
+  </div>
+  <header data-aos="fade-down">
+    <img src="icon.png" alt="AWEWE Logo" class="mx-auto" />
+    <div id="countdown" class="text-center text-yellow-400 font-bold text-base mt-4">
+      Pre-ICO Ends In: <span id="timer" class="pulse">Loading...</span>
+    </div>
+    <section class="container my-6" data-aos="fade-up">
+      <h2 class="text-center text-yellow-400 font-semibold mb-3">📌 Why Choose Coinawe?</h2>
+      <div class="info-grid">
+        <div>🔒 <strong>Revoke Ownership</strong><br>Smart contract ownership has been renounced to ensure security and transparency without developer intervention.</div>
+        <div>⚖ <strong>Automated Escrow System</strong><br>Transactions are securely processed automatically through smart contracts without intermediaries.</div>
+        <div>💸 <strong>Low Transaction Fees</strong><br>Enjoy competitive and affordable fees for every transaction.</div>
+        <div>👣 <strong>Wide Network & Multi-Crypto</strong><br>Supports multiple cryptocurrencies and integrates with Indonesian local banks (IDR) for easier access.</div>
+        <div>📊 <strong>Transparency and Public Audit</strong><br>Our system is regularly audited by independent parties to ensure integrity and trust.</div>
+      </div>
+    </section>
+    <h1 class="mt-4 text-lg font-bold">Coinawe</h1>
+  </header>
+  
+  <div class="container">
+    <section id="tokenomics" data-aos="fade-up">
+      <h2 class="text-center text-yellow-400 font-semibold mb-2">Tokenomics</h2>
+      <div class="info-grid">
+        <div><strong>Total Supply</strong><br/>100,000,000 AWEWE</div>
+        <div><strong>Pre-ICO</strong><br/>25% (25,000,000)</div>
+        <div><strong>Price</strong><br/>Ton 0.0005 / AWEWE</div>
+        <div><strong>Funding Target</strong><br/>Rp 500,000,000</div>
+      </div>
+    </section>
+    <section class="roadmap" id="roadmap" data-aos="fade-left" style="margin-top:2rem;">
+      <h2 class="text-center text-yellow-400 font-semibold mb-2">Project Roadmap</h2>
+      <ol>
+        <li><strong>Q2 2025</strong> – Pre-ICO & Token Launch</li>
+        <li><strong>Q3 2026</strong> – DEX Listing & Bot Integration</li>
+        <li><strong>Q4 2026</strong> – DAO Launch & Community Rewards</li>
+        <li><strong>Q1 2026</strong> – Ecosystem Expansion & CEX Listing</li>
+      </ol>
+    </section>
+    <section class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
+      <h2 class="text-sm sm:text-base mb-2">Join Investor Newsletter</h2>
+      <form id="newsletter-form">
+        <input type="text" id="username" placeholder="@YourTelegramUsername" required><br>
+        <button type="submit">Subscribe Now</button>
+      </form>
+    </section>
+  </div>
+</section>
+
+<section id="contact" class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
+  <h2 class="text-sm sm:text-base mb-2">📩 Contact Us</h2>
+  <form id="contact-form">
+    <input type="text" id="name" placeholder="Your Name" required><br>
+    <input type="text" id="contactUsername" placeholder="@YourTelegramUsername" required><br>
+    <input type="text" id="message" placeholder="Your Message" required><br>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer class="text-slate-500">&copy; 2025 COINAWE. All rights reserved.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+  // Newsletter
+  document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let username = document.getElementById("username").value.trim();
+    if (!username.startsWith("@")) { alert("Please enter a valid Telegram username (start with @)"); return; }
+    const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
+    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+    const chatId = "-1002834298142";
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(() => alert("✅ Username successfully sent to the investor group!"))
+      .catch(() => alert("❌ Failed to send to Telegram."));
+    this.reset();
+  });
+  // Contact
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const contactUsername = document.getElementById("contactUsername").value.trim();
+    const userMessage = document.getElementById("message").value.trim();
+    const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
+    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+    const chatId = "-1002834298142";
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(() => alert("✅ Message sent successfully!"))
+      .catch(() => alert("❌ Failed to send to Telegram."));
+    this.reset();
+  });
+  // Countdown
+  const countdownDate = new Date("2025-12-31T23:59:59").getTime();
+  const preicoBtn = document.getElementById("preico-btn");
+  const countdownFunction = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+    if (distance < 0) {
+      clearInterval(countdownFunction);
+      document.getElementById("timer").innerHTML = "✅ Listed on DEX Now!";
+      preicoBtn.textContent = "✅ Trade on DEX Now!";
+      preicoBtn.href = "https://dex.coinawe.site";
+      preicoBtn.classList.remove("bg-amber-500", "hover:bg-amber-600");
+      preicoBtn.classList.add("bg-emerald-600", "hover:bg-emerald-700");
+      return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+  }, 1000);
+</script>
+<script>
+  document.addEventListener("contextmenu", e => { e.preventDefault(); alert("❌ Action disabled for security reasons!"); });
+  document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && (e.key === "u" || e.key === "U")) { alert("❌ View Source disabled!"); e.preventDefault(); }
+    if (e.key === "F12") { alert("❌ Developer Tools disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) { alert("❌ Inspect disabled!"); e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && (e.key === "j" || e.key === "J")) { alert("❌ Console disabled!"); e.preventDefault(); }
+  });
+  document.addEventListener("dragstart", e => e.preventDefault());
+</script>
+</body>
+</html>

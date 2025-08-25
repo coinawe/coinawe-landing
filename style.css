@@ -1,0 +1,160 @@
+﻿/* Import Font */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+  font-weight: 800;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+  background-color: #2563eb;
+}
+
+.countdown-section {
+  margin: 3rem 0;
+}
+#timer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #38bdf8;
+  margin-top: 0.5rem;
+}
+
+.countbox {
+  display: inline-block;
+  background-color: #1e293b;
+  color: #f1f5f9;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 80px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.countbox strong {
+  font-size: 1.8rem;
+  color: #38bdf8;
+}
+
+.countbox span {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tokenomics {
+  margin: 3rem 0;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.info-grid div {
+  background-color: #1e293b;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.roadmap {
+  margin: 3rem 0;
+}
+.roadmap ol {
+  text-align: left;
+  max-width: 500px;
+  margin: 1rem auto 0 auto;
+  padding-left: 1rem;
+}
+.roadmap li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  border-top: 1px solid #1e293b;
+}
+
+
+.airdrop-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.parachute {
+  position: absolute;
+  top: -150px;
+  width: 100px;
+  animation: fall 12s linear infinite;
+  opacity: 0.7;
+}
+
+.parachute:nth-child(1) { left: 10%; }
+.parachute:nth-child(2) { left: 50%; }
+.parachute:nth-child(3) { left: 80%; }
+
+.parachute.delay1 { animation-delay: 4s; }
+.parachute.delay2 { animation-delay: 8s; }
+
+@keyframes fall {
+  0% {
+    transform: translateY(-150px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
