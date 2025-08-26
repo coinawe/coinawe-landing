@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -98,7 +98,6 @@
 </section>
 
 <section id="awewe">
-  
   <div class="container py-8" data-aos="fade-up">
     <a href="https://t.me/indo_escrow_bot" target="_blank" class="block rounded-lg overflow-hidden shadow-lg hover:shadow-sky-400/40 transition-shadow duration-300">
       <img src="banner.png" alt="Coinawe Presale Banner" class="w-full h-auto">
@@ -144,11 +143,8 @@
     <section class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
       <h2 class="text-sm sm:text-base mb-2">Join Investor Newsletter</h2>
       <form id="newsletter-form">
-  <input type="text" id="username" 
-         placeholder="@YourTelegramUsername" 
-         required 
-         pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
-  <button type="submit">Subscribe Now</button>
+        <input type="text" id="username" placeholder="@YourTelegramUsername" required pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
+        <button type="submit">Subscribe Now</button>
       </form>
     </section>
   </div>
@@ -157,81 +153,65 @@
 <section id="contact" class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
   <h2 class="text-sm sm:text-base mb-2">📩 Contact Us</h2>
   <form id="contact-form">
-  <input type="text" id="name" 
-         placeholder="Your Name" 
-         required minlength="2"><br>
-  <input type="text" id="contactUsername" 
-         placeholder="@YourTelegramUsername" 
-         required 
-         pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
-  <input type="text" id="message" 
-         placeholder="Your Message" 
-         required minlength="5"><br>
-  <button type="submit">Send Message</button>
-</form>
+    <input type="text" id="name" placeholder="Your Name" required minlength="2"><br>
+    <input type="text" id="contactUsername" placeholder="@YourTelegramUsername" required pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
+    <input type="text" id="message" placeholder="Your Message" required minlength="5"><br>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
 <footer class="text-slate-500">&copy; 2025 COINAWE. All rights reserved.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init();
-  // Newsletter
+AOS.init();
+const GAS_URL = "https://script.google.com/macros/s/AKfycbwFYtkyz-CT7MiCaxSuj2EnL2_IJf5613UYaIOWYCYFdOkR6a8eqggj5FE_SsQSU2Uk/exec";
+
+// Newsletter
 document.getElementById("newsletter-form").addEventListener("submit", function(e) {
   e.preventDefault();
-  let username = document.getElementById("username").value.trim();
-  const regex = /^@[a-zA-Z0-9_]{5,32}$/;
+  const username = document.getElementById("username").value.trim();
 
-  if (!regex.test(username)) {
-    alert("❌ Masukkan username Telegram valid (contoh: @relog)");
-    return;
-  }
-
-  const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
-  const botToken = "7946971231:AAG2EUHhEKcQpw3hZL-SvGMWmnYSTiscf3c";
-  const chatId = "-1002834298142";
-
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-    .then(() => alert("✅ Username berhasil dikirim!"))
-    .catch(() => alert("❌ Gagal mengirim ke Telegram."));
-  
-  this.reset();
+  fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify({ type: "newsletter", username })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      alert("✅ Username berhasil dikirim!");
+      this.reset();
+    } else {
+      alert("❌ Gagal: " + res.error);
+    }
+  })
+  .catch(() => alert("❌ Error saat menghubungi server."));
 });
 
 // Contact
 document.getElementById("contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
   const name = document.getElementById("name").value.trim();
-  const contactUsername = document.getElementById("contactUsername").value.trim();
-  const userMessage = document.getElementById("message").value.trim();
+  const username = document.getElementById("contactUsername").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  const regex = /^@[a-zA-Z0-9_]{5,32}$/;
-
-  if (name.length < 2) {
-    alert("❌ Nama terlalu pendek.");
-    return;
-  }
-
-  if (!regex.test(contactUsername)) {
-    alert("❌ Masukkan username Telegram valid (contoh: @marfhino)");
-    return;
-  }
-
-  if (userMessage.length < 5) {
-    alert("❌ Pesan terlalu pendek. Harap isi minimal 5 karakter.");
-    return;
-  }
-
-  const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
-  const botToken = "7946971231:AAG2EUHhEKcQpw3hZL-SvGMWmnYSTiscf3c";
-  const chatId = "-1002834298142";
-
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-    .then(() => alert("✅ Pesan berhasil dikirim!"))
-    .catch(() => alert("❌ Gagal mengirim ke Telegram."));
-  
-  this.reset();
+  fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify({ type: "contact", name, username, message })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      alert("✅ Pesan berhasil dikirim!");
+      this.reset();
+    } else {
+      alert("❌ Gagal: " + res.error);
+    }
+  })
+  .catch(() => alert("❌ Error saat menghubungi server."));
 });
+</script>
+<script>
   // Countdown
   const countdownDate = new Date("2025-12-31T23:59:59").getTime();
   const preicoBtn = document.getElementById("preico-btn");
@@ -265,8 +245,4 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
   document.addEventListener("dragstart", e => e.preventDefault());
 </script>
 </body>
-
 </html>
-
-
-
