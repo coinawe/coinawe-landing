@@ -168,31 +168,55 @@
   AOS.init();
   // Newsletter
   document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let username = document.getElementById("username").value.trim();
-    if (!username.startsWith("@")) { alert("Please enter a valid Telegram username (start with @)"); return; }
-    const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
-    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
-    const chatId = "-1002834298142";
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-      .then(() => alert("✅ Username successfully sent to the investor group!"))
-      .catch(() => alert("❌ Failed to send to Telegram."));
-    this.reset();
-  });
+  e.preventDefault();
+  let username = document.getElementById("username").value.trim();
+  const regex = /^@[a-zA-Z0-9_]{5,32}$/;
+
+  if (!regex.test(username)) {
+    alert("❌ Masukkan username Telegram valid (contoh: @marfhino)");
+    return;
+  }
+
+  const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
+  const botToken = "YOUR_BOT_TOKEN";
+  const chatId = "-1002834298142";
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+    .then(() => alert("✅ Username berhasil dikirim!"))
+    .catch(() => alert("❌ Gagal mengirim ke Telegram."));
+  
+  this.reset();
+});
+
   // Contact
   document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const contactUsername = document.getElementById("contactUsername").value.trim();
-    const userMessage = document.getElementById("message").value.trim();
-    const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
-    const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
-    const chatId = "-1002834298142";
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
-      .then(() => alert("✅ Message sent successfully!"))
-      .catch(() => alert("❌ Failed to send to Telegram."));
-    this.reset();
-  });
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const contactUsername = document.getElementById("contactUsername").value.trim();
+  const userMessage = document.getElementById("message").value.trim();
+
+  const regex = /^@[a-zA-Z0-9_]{5,32}$/;
+  if (!regex.test(contactUsername)) {
+    alert("❌ Masukkan username Telegram valid (contoh: @marfhino)");
+    return;
+  }
+
+  if (userMessage.length < 5) {
+    alert("❌ Pesan terlalu pendek. Harap isi minimal 5 karakter.");
+    return;
+  }
+
+  const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
+  const botToken = "YOUR_BOT_TOKEN";
+  const chatId = "-1002834298142";
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+    .then(() => alert("✅ Pesan berhasil dikirim!"))
+    .catch(() => alert("❌ Gagal mengirim ke Telegram."));
+  
+  this.reset();
+});
+
   // Countdown
   const countdownDate = new Date("2025-12-31T23:59:59").getTime();
   const preicoBtn = document.getElementById("preico-btn");
@@ -226,4 +250,5 @@
   document.addEventListener("dragstart", e => e.preventDefault());
 </script>
 </body>
+
 </html>
