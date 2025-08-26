@@ -173,12 +173,12 @@
   const regex = /^@[a-zA-Z0-9_]{5,32}$/;
 
   if (!regex.test(username)) {
-    alert("❌ Masukkan username Telegram valid (contoh: @marfhino)");
+    alert("❌ Masukkan username Telegram valid (contoh: @relog)");
     return;
   }
 
   const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
-  const botToken = "YOUR_BOT_TOKEN";
+  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
   const chatId = "-1002834298142";
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
@@ -207,7 +207,7 @@
   }
 
   const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
-  const botToken = "YOUR_BOT_TOKEN";
+  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
   const chatId = "-1002834298142";
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
@@ -252,3 +252,4 @@
 </body>
 
 </html>
+
