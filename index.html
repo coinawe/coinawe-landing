@@ -144,8 +144,11 @@
     <section class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
       <h2 class="text-sm sm:text-base mb-2">Join Investor Newsletter</h2>
       <form id="newsletter-form">
-        <input type="text" id="username" placeholder="@YourTelegramUsername" required><br>
-        <button type="submit">Subscribe Now</button>
+  <input type="text" id="username" 
+         placeholder="@YourTelegramUsername" 
+         required 
+         pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
+  <button type="submit">Subscribe Now</button>
       </form>
     </section>
   </div>
@@ -154,11 +157,18 @@
 <section id="contact" class="newsletter-form" data-aos="zoom-in" style="margin-top:2rem;">
   <h2 class="text-sm sm:text-base mb-2">📩 Contact Us</h2>
   <form id="contact-form">
-    <input type="text" id="name" placeholder="Your Name" required><br>
-    <input type="text" id="contactUsername" placeholder="@YourTelegramUsername" required><br>
-    <input type="text" id="message" placeholder="Your Message" required><br>
-    <button type="submit">Send Message</button>
-  </form>
+  <input type="text" id="name" 
+         placeholder="Your Name" 
+         required minlength="2"><br>
+  <input type="text" id="contactUsername" 
+         placeholder="@YourTelegramUsername" 
+         required 
+         pattern="^@[a-zA-Z0-9_]{5,32}$"><br>
+  <input type="text" id="message" 
+         placeholder="Your Message" 
+         required minlength="5"><br>
+  <button type="submit">Send Message</button>
+</form>
 </section>
 
 <footer class="text-slate-500">&copy; 2025 COINAWE. All rights reserved.</footer>
@@ -167,7 +177,7 @@
 <script>
   AOS.init();
   // Newsletter
-  document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+document.getElementById("newsletter-form").addEventListener("submit", function(e) {
   e.preventDefault();
   let username = document.getElementById("username").value.trim();
   const regex = /^@[a-zA-Z0-9_]{5,32}$/;
@@ -178,7 +188,7 @@
   }
 
   const message = `📥 New Investor%0A👤 Username: ${username}%0A🌐 Website: https://coinawe.site/`;
-  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+  const botToken = "7946971231:AAG2EUHhEKcQpw3hZL-SvGMWmnYSTiscf3c";
   const chatId = "-1002834298142";
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
@@ -188,16 +198,22 @@
   this.reset();
 });
 
-  // Contact
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
+// Contact
+document.getElementById("contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
   const name = document.getElementById("name").value.trim();
   const contactUsername = document.getElementById("contactUsername").value.trim();
   const userMessage = document.getElementById("message").value.trim();
 
   const regex = /^@[a-zA-Z0-9_]{5,32}$/;
+
+  if (name.length < 2) {
+    alert("❌ Nama terlalu pendek.");
+    return;
+  }
+
   if (!regex.test(contactUsername)) {
-    alert("❌ Masukkan username Telegram valid (contoh: @relog)");
+    alert("❌ Masukkan username Telegram valid (contoh: @marfhino)");
     return;
   }
 
@@ -207,7 +223,7 @@
   }
 
   const message = `📨 New Contact Message%0A👤 Name: ${name}%0A🔗 Telegram: ${contactUsername}%0A💬 Message: ${userMessage}`;
-  const botToken = "7946971231:AAGksskasvrtGfn0bwo3meLaiFsuQIznS5w";
+  const botToken = "7946971231:AAG2EUHhEKcQpw3hZL-SvGMWmnYSTiscf3c";
   const chatId = "-1002834298142";
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
@@ -216,7 +232,6 @@
   
   this.reset();
 });
-
   // Countdown
   const countdownDate = new Date("2025-12-31T23:59:59").getTime();
   const preicoBtn = document.getElementById("preico-btn");
@@ -252,5 +267,6 @@
 </body>
 
 </html>
+
 
 
